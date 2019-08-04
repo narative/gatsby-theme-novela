@@ -369,8 +369,8 @@ It is recommended to use the Default options, but if your project requires somet
 
 | Option         |     Default     |                                        Description                                        |
 | -------------- | :-------------: | :---------------------------------------------------------------------------------------: |
-| contentAuthors |  content/posts  |                     Define where you want to pull your Post data from                     |
-| contentPosts   | content/authors |                    Define where you want to pull your Author data from                    |
+| contentAuthors |  content/authors  |                     Define where you want to pull your Post data from                     |
+| contentPosts   | content/posts |                    Define where you want to pull your Author data from                    |
 | basePath       |        /        | Where should the site be served from? `/blog` will change all paths to start with `/blog` |
 
 [View Theme option example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js#L36)
