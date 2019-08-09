@@ -9,6 +9,7 @@ import { range } from "@utils";
 
 import { IPaginator } from "@typings";
 
+
 /**
  * <Paginator />
  *

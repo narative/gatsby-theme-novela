@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 
-const UnorderedList = styled.ul`
+import { Theme } from "../../gatsby-plugin-theme-ui";
+
+const UnorderedList = styled.ul<{theme: Theme}>`
   list-style: none;
   counter-reset: list;
   color: ${p => p.theme.colors.articleText};

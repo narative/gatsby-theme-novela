@@ -1,10 +1,10 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
-
 import Image from "@components/Image";
 
 import mediaqueries from "@styles/media";
+import { Theme } from "../../gatsby-plugin-theme-ui";
 
 const authorQuery = graphql`
   {
@@ -82,7 +82,7 @@ const BioAvatarInner = styled.div`
   overflow: hidden;
 `;
 
-const BioText = styled.p`
+const BioText = styled.p<{theme: Theme}>`
   max-width: 430px;
   font-size: 14px;
   line-height: 1.45;

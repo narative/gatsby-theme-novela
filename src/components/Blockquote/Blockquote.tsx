@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
+import { Theme } from "../../gatsby-plugin-theme-ui";
 
-const Blockquote = styled.blockquote`
+const Blockquote = styled.blockquote<{theme: Theme}>`
   transition: color 0.25s ease;
   margin: 15px auto 50px;
   color: ${p => p.theme.colors.articleText};

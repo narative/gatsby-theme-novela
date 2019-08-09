@@ -1,8 +1,7 @@
 import prism from "./prism";
 
-export default {
+export const colors = {
   prism,
-
   primary: "#000",
   secondary: "#73737D",
   grey: "#73737D",
@@ -33,3 +32,5 @@ export default {
     },
   },
 };
+
+export type ColorKeys = keyof typeof colors

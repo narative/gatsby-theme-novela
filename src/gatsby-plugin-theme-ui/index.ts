@@ -1,7 +1,7 @@
 import merge from "lodash/merge";
 
-import colors from "./colors";
-import tags from "./tags";
+import {colors, ColorKeys} from "./colors";
+import {tags, TagKeys} from "./tags";
 
 const breakpoints = [
   ["phone_small", 320],
@@ -20,6 +20,8 @@ const fonts = {
   monospace: `"Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
 };
 
+export type FontKeys = keyof typeof fonts
+
 export default merge({
   initialColorMode: `light`,
   colors,
@@ -27,3 +29,12 @@ export default merge({
   breakpoints,
   tags,
 });
+
+
+export interface Theme {
+  initialColorMode: "light" | "dark"
+  colors: { [key in ColorKeys]: string }
+  fonts: { [key in FontKeys]: string }
+  breakpoints: Array<Array<string | number>>
+  tags: { [key in TagKeys]: string }
+}

@@ -7,7 +7,7 @@ import Footer from "@components/Navigation/Navigation.Footer";
 
 import { globalStyles } from "@styles";
 import theme from "../../gatsby-plugin-theme-ui";
-import colors from "../../gatsby-plugin-theme-ui/colors";
+import {colors} from "../../gatsby-plugin-theme-ui/colors";
 
 interface LayoutProps {
   children: React.ReactChild;

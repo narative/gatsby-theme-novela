@@ -4,6 +4,8 @@ import throttle from "lodash/throttle";
 
 import { clamp } from "@utils";
 
+import { Theme } from "../../gatsby-plugin-theme-ui";
+
 export interface IProgress {
   contentHeight: number;
 }
@@ -44,7 +46,7 @@ const Frame = styled.div`
   user-select: none;
 `;
 
-const Trackline = styled.div`
+const Trackline = styled.div<{theme: Theme}>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -56,7 +58,7 @@ const Trackline = styled.div`
   overflow: hidden;
 `;
 
-const ProgressLine = styled.div`
+const ProgressLine = styled.div<{theme: Theme}>`
   position: absolute;
   height: 100%;
   top: -100%;

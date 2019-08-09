@@ -7,6 +7,8 @@ import SocialLinks from "@components/SocialLinks";
 
 import mediaqueries from "@styles/media";
 
+import { Theme } from "../../gatsby-plugin-theme-ui";
+
 const siteQuery = graphql`
   {
     allSite {
@@ -45,7 +47,7 @@ function Footer() {
 
 export default Footer;
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.div<{theme: Theme}>`
   position: relative;
   display: flex;
   align-items: center;
@@ -63,7 +65,7 @@ const FooterContainer = styled.div`
   `}
 `;
 
-const HoritzontalRule = styled.div`
+const HoritzontalRule = styled.div<{theme: Theme}>`
   position: relative;
   margin: 140px auto 50px;
   border-bottom: 1px solid ${p => p.theme.colors.horizontalRule};
@@ -87,7 +89,7 @@ const FooterText = styled.div`
   `}
 `;
 
-const FooterGradient = styled.div`
+const FooterGradient = styled.div<{theme: Theme}>`
   position: absolute;
   bottom: 0;
   left: 0;

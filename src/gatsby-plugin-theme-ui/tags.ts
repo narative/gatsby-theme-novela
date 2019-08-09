@@ -1,4 +1,4 @@
-export default {
+export const tags = {
   pre: {
     variant: `prism`,
     fontFamily: `"Operator Mono", monospace`,
@@ -23,3 +23,6 @@ export default {
     paddingX: `0.2em`,
   },
 };
+
+
+export type TagKeys = keyof typeof tags

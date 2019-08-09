@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Theme } from "../../gatsby-plugin-theme-ui";
 
-const Anchor = styled.a`
+const Anchor = styled.a<{theme: Theme}>`
   transition: color 0.25s ease;
   color: ${p => p.theme.colors.accent};
 

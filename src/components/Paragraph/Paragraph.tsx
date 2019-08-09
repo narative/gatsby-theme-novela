@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 
-const Paragraph = styled.p`
+import { Theme } from "../../gatsby-plugin-theme-ui";
+
+
+const Paragraph = styled.p<{theme: Theme}>`
   line-height: 1.756;
   font-size: 18px;
   color: ${p => p.theme.colors.articleText};

@@ -5,6 +5,8 @@ import styled from "@emotion/styled";
 import Icons from "../../icons/";
 import mediaqueries from "@styles/media";
 
+import { Theme } from "../../gatsby-plugin-theme-ui";
+
 const icons = {
   dribbble: Icons.Dribbble,
   linkedin: Icons.LinkedIn,
@@ -60,7 +62,7 @@ function SocialLinks({ fill = "#73737D" }: { fill: string }) {
 
 export default SocialLinks;
 
-const SocialIconContainer = styled.a`
+const SocialIconContainer = styled.a<{theme: Theme}>`
   position: relative;
   margin-left: 3.2rem;
   text-decoration: none;
