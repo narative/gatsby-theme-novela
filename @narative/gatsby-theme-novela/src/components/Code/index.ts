@@ -1,7 +1,7 @@
-import Pre from "./Code.Pre";
-import Prism from "./Code.Prism";
+import CodePre from "./CodePre";
+import CodePrism from "./CodePrism";
 
 export default {
-  Pre,
-  Prism,
+  CodePre,
+  CodePrism,
 };

@@ -33,8 +33,8 @@ const components = {
   ul: Lists.ul,
   ol: Lists.ol,
   p: Paragraph,
-  code: Code.Prism,
-  pre: Code.Pre,
+  code: Code.CodePrism,
+  pre: Code.CodePre,
 };
 
 function MDX({ content, children, ...props }) {
@@ -57,7 +57,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: "680px",
   large: "1004px",
-  full: "100vw",
+  full: "100%",
 };
 
 const ARTICLE_WIDTH = css`

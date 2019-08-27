@@ -18,7 +18,7 @@ import { IArticle } from "@types";
  *  [.....LONG.....], [..SHORT..]
  *  [..............], [.........]
  *
- * This does NOT use Articles.List because there's a special case of only have 1 article
+ * This does NOT use ArticlesList because there's a special case of only have 1 article
  * as the next one suggested article, which requires special styling we didn't want to
  * mix into the generic list component.
  */

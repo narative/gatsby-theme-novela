@@ -4,10 +4,10 @@ import styled from "@emotion/styled";
 import Section from "@components/Section";
 import SEO from "@components/SEO";
 import Layout from "@components/Layout";
-import Paginator from "@components/Navigation/Navigation.Paginator";
+import Paginator from "@components/Navigation/NavigationPaginator";
 
-import ArticlesHero from "../sections/articles/Articles.Hero";
-import ArticlesList from "../sections/articles/Articles.List";
+import ArticlesHero from "../sections/articles/ArticlesHero";
+import ArticlesList from "../sections/articles/ArticlesList";
 
 function ArticlesPage({ location, pageContext }) {
   const articles = pageContext.group;

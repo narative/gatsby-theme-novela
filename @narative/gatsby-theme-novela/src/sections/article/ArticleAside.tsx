@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, ReactNode } from "react";
 import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 
-import HandleOverlap from "./Article.HandleOverlap";
+import HandleOverlap from "./ArticleHandleOverlap";
 
 import mediaqueries from "@styles/media";
 import { clamp } from "@utils";

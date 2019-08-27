@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import mediaqueries from "@styles/media";
 import { IArticle } from "@types";
 
-import ArticlesList from "../articles/Articles.List";
+import ArticlesList from "../articles/ArticlesList";
 
 interface AuthorArticlesProps {
   articles: IArticle[];

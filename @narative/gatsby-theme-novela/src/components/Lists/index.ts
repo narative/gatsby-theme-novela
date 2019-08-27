@@ -1,5 +1,5 @@
-import OrderedList from "./List.Ordered";
-import UnorderedList from "./List.Unordered";
+import OrderedList from "./ListOrdered";
+import UnorderedList from "./ListUnordered";
 
 export default {
   ol: OrderedList,

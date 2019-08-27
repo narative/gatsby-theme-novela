@@ -7,7 +7,7 @@ import Image, { ImagePlaceholder } from "@components/Image";
 import mediaqueries from "@styles/media";
 import { IArticle, IAuthor } from "@types";
 
-import ArticleAuthors from "./Article.Authors";
+import ArticleAuthors from "./ArticleAuthors";
 
 interface ArticleHeroProps {
   article: IArticle;
@@ -48,7 +48,7 @@ const Hero = styled.div`
   ${p => mediaqueries.phablet`
     &::before {
       content: "";
-      width: 100vw;
+      width: 100%;
       height: 20px;
       background: ${p.theme.colors.primary};
       position: absolute;
@@ -59,7 +59,7 @@ const Hero = styled.div`
 
     &::after {
       content: "";
-      width: 100vw;
+      width: 100%;
       height: 10px;
       background: ${p.theme.colors.background};
       position: absolute;

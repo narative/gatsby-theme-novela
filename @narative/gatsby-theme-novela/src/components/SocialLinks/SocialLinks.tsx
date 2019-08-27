@@ -22,6 +22,8 @@ const icons = {
   youtube: Icons.YouTube,
   medium: Icons.Medium,
   unsplash: Icons.Unsplash,
+  patreon: Icons.Patreon,
+  paypal: Icons.Paypal
 };
 
 const getHostname = url => {

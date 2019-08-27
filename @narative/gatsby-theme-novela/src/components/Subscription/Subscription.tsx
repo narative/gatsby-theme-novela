@@ -85,6 +85,7 @@ const SubscriptionContainer = styled.div`
   margin: 10px auto 100px;
   background: ${p => p.theme.colors.card};
   box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.05);
+  z-index: 1;
 
   ${mediaqueries.tablet`
     padding: 50px 0 0;

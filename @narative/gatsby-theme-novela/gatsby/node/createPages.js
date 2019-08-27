@@ -9,9 +9,9 @@ const createPaginatedPages = require("gatsby-paginate");
 
 const templatesDir = path.resolve(__dirname, "../../src/templates");
 const templates = {
-  articles: path.resolve(templatesDir, "articles.template.tsx"),
-  article: path.resolve(templatesDir, "article.template.tsx"),
-  author: path.resolve(templatesDir, "author.template.tsx"),
+  articles: path.resolve(templatesDir, "ArticlesTemplate.tsx"),
+  article: path.resolve(templatesDir, "ArticleTemplate.tsx"),
+  author: path.resolve(templatesDir, "AuthorTemplate.tsx"),
 };
 
 const query = require("../data/data.query");
@@ -72,7 +72,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   if (local) {
     try {
-      log("Querying Authors & Aritcles source:", "Local");
+      log("Querying Authors & Articles source:", "Local");
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
 
@@ -90,7 +90,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   if (contentful) {
     try {
-      log("Querying Authors & Aritcles source:", "Contentful");
+      log("Querying Authors & Articles source:", "Contentful");
       const contentfulAuthors = await graphql(query.contentful.authors);
       const contentfulArticles = await graphql(query.contentful.articles);
 

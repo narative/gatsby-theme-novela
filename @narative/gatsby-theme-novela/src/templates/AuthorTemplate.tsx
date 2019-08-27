@@ -4,10 +4,10 @@ import styled from "@emotion/styled";
 import Section from "@components/Section";
 import SEO from "@components/SEO";
 import Layout from "@components/Layout";
-import Paginator from "@components/Navigation/Navigation.Paginator";
+import Paginator from "@components/Navigation/NavigationPaginator";
 
-import AuthorHero from "../sections/author/Author.Hero";
-import AuthorArticles from "../sections/author/Author.Articles";
+import AuthorHero from "../sections/author/AuthorHero";
+import AuthorArticles from "../sections/author/AuthorArticles";
 
 function ArticlesPage({ location, pageContext }) {
   const author = pageContext.additionalContext.author;

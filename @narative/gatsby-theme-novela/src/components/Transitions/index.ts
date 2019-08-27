@@ -1,4 +1,4 @@
-import CSSFadeIn from "@components/Transitions/Transitions.CSS.FadeIn";
+import CSSFadeIn from "@components/Transitions/TransitionsCSSFadeIn";
 
 export default {
   CSS: {

@@ -12,12 +12,12 @@ import Subscription from "@components/Subscription";
 import mediaqueries from "@styles/media";
 import { debounce } from "@utils";
 
-import ArticleAside from "../sections/article/Article.Aside";
-import ArticleHero from "../sections/article/Article.Hero";
-import ArticleControls from "../sections/article/Article.Controls";
-import ArticlesNext from "../sections/article/Article.Next";
-import ArticleSEO from "../sections/article/Article.SEO";
-import ArticleShare from "../sections/article/Article.Share";
+import ArticleAside from "../sections/article/ArticleAside";
+import ArticleHero from "../sections/article/ArticleHero";
+import ArticleControls from "../sections/article/ArticleControls";
+import ArticlesNext from "../sections/article/ArticleNext";
+import ArticleSEO from "../sections/article/ArticleSEO";
+import ArticleShare from "../sections/article/ArticleShare";
 
 const siteQuery = graphql`
   {
@@ -127,7 +127,7 @@ const ArticleBody = styled.article`
   ${mediaqueries.desktop`
     padding-left: 53px;
   `}
-  
+
   ${mediaqueries.tablet`
     padding: 70px 0 80px;
   `}
