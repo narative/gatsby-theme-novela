@@ -54,7 +54,7 @@ const icons = {
   twitter: SocialIcons.TwitterIcon,
   facebook: SocialIcons.FacebookIcon,
   instagram: SocialIcons.InstagramIcon,
-  github: SocialIcons.GithubIcon,
+  github: SocialIcons.GithubIcon
 };
 
 function SocialLinks({ fill = "#73737D" }: { fill: string }) {
@@ -85,6 +85,34 @@ function SocialLinks({ fill = "#73737D" }: { fill: string }) {
 ```
 
 At Narative, we’ve been fans of Gatsby from day one, using it to build performant and flexible products for both clients and ourselves. With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
+
+```js live
+const Wrapper = ({ children }) => (
+  <div
+    style={{
+      background: "papayawhip",
+      width: "100%",
+      padding: "2rem"
+    }}
+  >
+    {children}
+  </div>
+);
+
+const Title = () => (
+  <h2 style={{ color: "palevioletred", textAlign: "center" }}>
+    Hello World!
+    <br />
+    Try Novela Gatsby Theme.
+  </h2>
+);
+
+render(
+  <Wrapper>
+    <Title />
+  </Wrapper>
+);
+```
 
 One of the challenges I had when learning Gatsby was trying to understand the Gatsby lifecycle. React introduced me to the concept of a Component Lifecycle, but when I started learning Gatsby I felt at a loss again. I remember looking through example repositories and seeing Gatsby specific files in every project and thinking to myself, “What are these files for? Why are gatsby-node.js, gatsby-browser.js, and gatsby-ssr.js generated in the default starter kit? Can I really delete these files?”
 

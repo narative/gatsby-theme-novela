@@ -42,13 +42,13 @@ const Subscription: React.FunctionComponent<{}> = () => {
     <Section narrow>
       <SubscriptionContainer>
         <Content>
-          <Headings.h3>
+          <Heading>
             Join our email list and get notified about new content
-          </Headings.h3>
+          </Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            fermentum ipsum et pharetra congue. Pellentesque lacus arcu,
-            vulputate vel porttitor vitae.
+            Be the first to receive our latest content with the ability to
+            opt-out at anytime. We promise to not spam your inbox or share your
+            email with any third parties.
           </Text>
           <Form onSubmit={handleSubmit} hasError={error}>
             <Input
@@ -115,14 +115,22 @@ const Content = styled.div`
   `}
 `;
 
+const Heading = styled(Headings.h3)`
+  margin-bottom: 20px;
+
+  ${mediaqueries.tablet`
+    margin-bottom: 15px;
+  `}
+`;
+
 const Text = styled.p`
-  margin: 20px auto 30px;
+  margin: 0 auto 30px;
   color: ${p => p.theme.colors.grey};
   line-height: 1.75;
 
   ${mediaqueries.tablet`
     padding: 0 26px;
-    margin: 12px auto 25px;
+    margin: 0 auto 25px;
   `}
 `;
 

@@ -5,12 +5,56 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "yarn workspace www build",
     "dev": "yarn start",
-    "start": "yarn workspace www develop",
-    "build": "yarn workspace www build"
+    "lint": "eslint --ignore-path .gitignore .",
+    "start": "yarn workspace www develop"
   },
   "workspaces": [
     "@narative/gatsby-theme-novela",
     "www"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-unicorn": "^10.0.0",
+    "husky": "^3.0.4",
+    "prettier": "^1.18.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "plugin:prettier/recommended",
+      "plugin:unicorn/recommended"
+    ],
+    "env": {
+      "browser": false
+    },
+    "overrides": [],
+    "plugins": [],
+    "rules": {
+      "unicorn/no-abusive-eslint-disable": 0,
+      "unicorn/filename-case": [
+        "error",
+        {
+          "cases": {
+            "camelCase": true,
+            "kebabCase": true
+          }
+        }
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
 }

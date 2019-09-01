@@ -75,3 +75,6 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# NPM lock files
+package-lock.json

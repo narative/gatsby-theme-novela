@@ -1,58 +1,59 @@
-"use strict";
-require("dotenv").config();
+/* eslint-disable no-console, import/no-extraneous-dependencies, prefer-const, no-shadow */
 
-const log = (msg, section) =>
-  console.log(`\n\x1b[36m${msg} \x1b[4m${section}\x1b[0m\x1b[0m\n`);
+require('dotenv').config();
 
-const path = require("path");
-const createPaginatedPages = require("gatsby-paginate");
+const log = (message, section) =>
+  console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`);
 
-const templatesDir = path.resolve(__dirname, "../../src/templates");
+const path = require('path');
+const createPaginatedPages = require('gatsby-paginate');
+
+const templatesDirectory = path.resolve(__dirname, '../../src/templates');
 const templates = {
-  articles: path.resolve(templatesDir, "articles.template.tsx"),
-  article: path.resolve(templatesDir, "article.template.tsx"),
-  author: path.resolve(templatesDir, "author.template.tsx"),
+  articles: path.resolve(templatesDirectory, 'articles.template.tsx'),
+  article: path.resolve(templatesDirectory, 'article.template.tsx'),
+  author: path.resolve(templatesDirectory, 'author.template.tsx'),
 };
 
-const query = require("../data/data.query");
-const normalize = require("../data/data.normalize");
+const query = require('../data/data.query');
+const normalize = require('../data/data.normalize');
 
-/////////////////// Utility functions ///////////////////
+// ///////////////// Utility functions ///////////////////
 
 function buildPaginatedPath(index, basePath) {
-  if (basePath === "/") {
+  if (basePath === '/') {
     return index > 1 ? `${basePath}page/${index}` : basePath;
   }
   return index > 1 ? `${basePath}/page/${index}` : basePath;
 }
 
-function slugify(str, base) {
-  const slug = str
+function slugify(string, base) {
+  const slug = string
     .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)+/g, "");
+    .normalize('NFD')
+    .replace(/[\u0300-\u036F]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
 
-  return `${base}/${slug}`.replace(/\/\/+/g, "/");
+  return `${base}/${slug}`.replace(/\/\/+/g, '/');
 }
 
-function getUniqueListBy(arr, key) {
-  return [...new Map(arr.map(item => [item[key], item])).values()];
+function getUniqueListBy(array, key) {
+  return [...new Map(array.map(item => [item[key], item])).values()];
 }
 
 const byDate = (a, b) => new Date(b.dateForSEO) - new Date(a.dateForSEO);
 
-/////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////
 
 module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   const {
-    basePath = "/",
-    authorsPath = "/authors",
+    basePath = '/',
+    authorsPath = '/authors',
     authorsPage = true,
     pageLength = 6,
     sources = {},
-    mailchimp = "",
+    mailchimp = '',
   } = themeOptions;
 
   // Defaulting to look at the local MDX files as sources.
@@ -67,12 +68,12 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     netlify: { authors: [], articles: [] },
   };
 
-  log("Config basePath", basePath);
-  if (authorsPage) log("Config authorsPath", authorsPath);
+  log('Config basePath', basePath);
+  if (authorsPage) log('Config authorsPath', authorsPath);
 
   if (local) {
     try {
-      log("Querying Authors & Aritcles source:", "Local");
+      log('Querying Authors & Aritcles source:', 'Local');
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
 
@@ -90,7 +91,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   if (contentful) {
     try {
-      log("Querying Authors & Aritcles source:", "Contentful");
+      log('Querying Authors & Aritcles source:', 'Contentful');
       const contentfulAuthors = await graphql(query.contentful.authors);
       const contentfulArticles = await graphql(query.contentful.articles);
 
@@ -122,7 +123,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       ...dataSources.contentful.authors,
       ...dataSources.netlify.authors,
     ],
-    "name",
+    'name',
   );
 
   if (articles.length === 0 || authors.length === 0) {
@@ -141,7 +142,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
    * /articles/page/1
    * ...
    */
-  log("Creating", "articles page");
+  log('Creating', 'articles page');
   createPaginatedPages({
     edges: articlesThatArentSecret,
     pathPrefix: basePath,
@@ -161,14 +162,14 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
    * Once the list of articles have bene created, we need to make individual article posts.
    * To do this, we need to find the corresponding authors since we allow for co-authors.
    */
-  log("Creating", "article posts");
+  log('Creating', 'article posts');
   articles.forEach((article, index) => {
     // Match the Author to the one specified in the article
     let authorsThatWroteTheArticle;
     try {
       authorsThatWroteTheArticle = authors.filter(author => {
         const allAuthors = article.author
-          .split(",")
+          .split(',')
           .map(a => a.trim().toLowerCase());
 
         return allAuthors.some(a => a === author.name.toLowerCase());
@@ -187,7 +188,9 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
      * We need a way to find the next artiles to suggest at the bottom of the articles page.
      * To accomplish this there is some special logic surrounding what to show next.
      */
-    let next = articles.slice(index + 1, index + 3);
+    let next = articles
+      .filter(article => !article.secret)
+      .slice(index + 1, index + 3);
     // If it's the last item in the list, there will be no articles. So grab the first 2
     if (next.length === 0) next = articles.slice(0, 2);
     // If there's 1 item in the list, grab the first article
@@ -216,7 +219,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
    * If enabled, each author will get their own page and a list of the articles they have written.
    */
   if (authorsPage) {
-    log("Creating", "authors page");
+    log('Creating', 'authors page');
 
     authors.forEach(author => {
       const articlesTheAuthorHasWritten = articles

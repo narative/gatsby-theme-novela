@@ -2,16 +2,14 @@ import React from "react";
 
 const UnsplashIcon = ({ fill = "white" }) => (
   <svg
-    width="32"
-    height="32"
-    xmlns="http://www.w3.org/2000/svg">
-    <path
-    fillRule="evenodd"
-    clipRule="evenodd"
-    d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"
-    fill={fill}/>
+    width="15"
+    height="15"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M10 9V0H22V9H10ZM22 14H32V32H0V14H10V23H22V14Z" fill={fill} />
   </svg>
-
 );
 
 export default UnsplashIcon;

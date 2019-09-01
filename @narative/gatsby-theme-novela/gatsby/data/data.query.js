@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-transformer-sharp/src/fragments.js
 
 const GatsbyFluid_withWebp = `

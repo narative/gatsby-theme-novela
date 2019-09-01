@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * In order to improve the authoring experience we'll set a fallback for hero images
  * when they're not provided. This will allow you to write articles without immediately
@@ -21,7 +23,7 @@ function normalizeHero(article) {
       seo: article.hero.seo.fixed,
     };
   } else {
-    console.log("\x1b[33m", `Missing hero for "${article.title}"`);
+    console.log('\u001B[33m', `Missing hero for "${article.title}"`);
   }
 
   return hero;
@@ -41,7 +43,7 @@ function normalizeAvatar(author) {
       large: author.avatar.large.fluid,
     };
   } else {
-    console.log("\x1b[33m", `Missing avatar for "${author.name}"`);
+    console.log('\u001B[33m', `Missing avatar for "${author.name}"`);
   }
 
   return avatar;
@@ -64,12 +66,12 @@ module.exports.local = {
 
 module.exports.contentful = {
   articles: ({ node: article }) => {
-    const author = article.author.reduce((curr, next, index, arr) => {
-      if (arr.length === 1) {
+    const author = article.author.reduce((curr, next, index, array) => {
+      if (array.length === 1) {
         return next.name;
       }
 
-      return curr + next.name + ", ";
+      return `${curr + next.name}, `;
     }, ``);
 
     return {

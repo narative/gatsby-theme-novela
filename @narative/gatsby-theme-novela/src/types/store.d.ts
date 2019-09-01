@@ -19,7 +19,7 @@ type ExtractSimpleAction<A> = A extends any
 
 namespace Store {
   // Type and payloads for all actions in the Redux framework
-  type Actions =
+  // type Actions =
     // | import('../store/authentication/actions').Actions
 
   // List of all types strings

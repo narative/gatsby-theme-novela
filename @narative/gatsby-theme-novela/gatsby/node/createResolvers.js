@@ -1,9 +1,7 @@
-"use strict";
-
 // helper that grabs the mdx resolver when given a string fieldname
 const mdxResolverPassthrough = fieldName => async (
   source,
-  args,
+  arguments_,
   context,
   info,
 ) => {
@@ -12,7 +10,7 @@ const mdxResolverPassthrough = fieldName => async (
     id: source.parent,
   });
   const resolver = type.getFields()[fieldName].resolve;
-  const result = await resolver(mdxNode, args, context, {
+  const result = await resolver(mdxNode, arguments_, context, {
     fieldName,
   });
   return result;

@@ -15,6 +15,7 @@ import HorizontalRule from "@components/HorizontalRule";
 import Lists from "@components/Lists";
 import Paragraph from "@components/Paragraph";
 import Cta from "@components/Cta";
+import Tables from "@components/Tables";
 import { ImageZoom } from "@components/Image";
 
 import mediaqueries from "@styles/media";
@@ -37,6 +38,10 @@ const components = {
   code: Code.Prism,
   pre: Code.Pre,
   cta: Cta,
+  table: Tables.Table,
+  thead: Tables.Head,
+  th: Tables.HeadCell,
+  td: Tables.Cell
 };
 
 function MDX({ content, children, ...props }) {
@@ -59,7 +64,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: "680px",
   large: "1004px",
-  full: "100%",
+  full: "100vw"
 };
 
 const ARTICLE_WIDTH = css`
@@ -122,7 +127,7 @@ const PrismCSS = p => css`
     max-width: 744px;
     margin: 0 auto;
     padding: 32px;
-    font-size: 14px;
+    font-size: 13px;
     margin: 15px auto 50px;
     border-radius: 5px;
     font-family: ${p.theme.fonts.monospace};
@@ -284,7 +289,6 @@ const ImageCSS = css`
     position: relative;
     left: -68px;
     width: ${IMAGE_WIDTHS.full};
-    max-width: ${IMAGE_WIDTHS.full};
     margin: 25px auto 60px;
     pointer-events: none;
 

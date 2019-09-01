@@ -39,7 +39,9 @@ function SocialLinks({ links, fill = "#73737D" }: SocialLinksProps) {
         const name = getHostname(option.url);
         const Icon = icons[name];
         if (!Icon) {
-          throw new Error(`unsupported social link name=${name} / url=${option.url}`);
+          throw new Error(
+            `unsupported social link name=${name} / url=${option.url}`
+          );
         }
         return (
           <SocialIconContainer
@@ -65,6 +67,7 @@ const SocialIconContainer = styled.a`
   position: relative;
   margin-left: 3.2rem;
   text-decoration: none;
+  max-width: 16px;
 
   &:hover {
     svg {

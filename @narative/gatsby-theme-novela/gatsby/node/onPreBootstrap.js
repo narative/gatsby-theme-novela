@@ -1,10 +1,8 @@
-"use strict";
-
-const fs = require("fs-extra");
+const fs = require('fs-extra'); // eslint-disable-line import/no-extraneous-dependencies
 
 module.exports = async ({ reporter }, themeOptions) => {
-  const authorsPath = themeOptions.contentAuthors || "content/authors";
-  const postsPath = themeOptions.contentPosts || "content/posts";
+  const authorsPath = themeOptions.contentAuthors || 'content/authors';
+  const postsPath = themeOptions.contentPosts || 'content/posts';
 
   if (!fs.existsSync(authorsPath)) {
     reporter.warn(`

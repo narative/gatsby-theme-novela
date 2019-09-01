@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import styled from "@emotion/styled";
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import theme from "prism-react-renderer/themes/oceanicNext";
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
@@ -17,7 +19,7 @@ function calculateLinesToHighlight(meta) {
     return index => {
       const lineNumber = index + 1;
       const inRange = lineNumbers.some(([start, end]) =>
-        end ? lineNumber >= start && lineNumber <= end : lineNumber === start,
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
       );
       return inRange;
     };
@@ -26,47 +28,61 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-function CodePrism({ codeString, language, metastring }) {
+function CodePrism({ codeString, language, metastring, ...props }) {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
 
-  return (
-    <Highlight {...defaultProps} code={codeString} language={language}>
-      {({ className, tokens, getLineProps, getTokenProps }) => {
-        return (
-          <div style={{ overflow: "auto" }}>
-            <pre className={className} style={{ position: "relative" }}>
-              <Copy toCopy={codeString} />
-              {tokens.map((line, index) => {
-                const { className } = getLineProps({
-                  line,
-                  key: index,
-                  className: shouldHighlightLine(index) ? "highlight-line" : "",
-                });
+  if (props["live"]) {
+    return (
+      <Container>
+        <LiveProvider code={codeString} noInline={true} theme={theme}>
+          <LiveEditor style={{ marginBottom: "3px", borderRadius: "2px" }} />
+          <LivePreview style={{ fontSize: "18px", borderRadius: "2px" }} />
+          <LiveError style={{ color: "tomato" }} />
+        </LiveProvider>
+      </Container>
+    );
+  } else {
+    return (
+      <Highlight {...defaultProps} code={codeString} language={language}>
+        {({ className, tokens, getLineProps, getTokenProps }) => {
+          return (
+            <div style={{ overflow: "auto" }}>
+              <pre className={className} style={{ position: "relative" }}>
+                <Copy toCopy={codeString} />
+                {tokens.map((line, index) => {
+                  const { className } = getLineProps({
+                    line,
+                    key: index,
+                    className: shouldHighlightLine(index)
+                      ? "highlight-line"
+                      : ""
+                  });
 
-                return (
-                  <div key={index} className={className}>
-                    <span className="number-line">{index + 1}</span>
-                    {line.map((token, key) => {
-                      const { className, children } = getTokenProps({
-                        token,
-                        key,
-                      });
+                  return (
+                    <div key={index} className={className}>
+                      <span className="number-line">{index + 1}</span>
+                      {line.map((token, key) => {
+                        const { className, children } = getTokenProps({
+                          token,
+                          key
+                        });
 
-                      return (
-                        <span key={key} className={className}>
-                          {children}
-                        </span>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </pre>
-          </div>
-        );
-      }}
-    </Highlight>
-  );
+                        return (
+                          <span key={key} className={className}>
+                            {children}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </pre>
+            </div>
+          );
+        }}
+      </Highlight>
+    );
+  }
 }
 
 export default CodePrism;
@@ -128,4 +144,47 @@ const CopyButton = styled.button`
   ${mediaqueries.tablet`
     display: none;
   `}
+`;
+
+const Container = styled.div`
+  overflow: scroll;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 13px;
+  margin: 15px auto 50px;
+  border-radius: 5px;
+  font-family: ${p => p.theme.fonts.monospace} !important;
+
+  textarea,
+  pre {
+    padding: 32px !important;
+    font-family: ${p => p.theme.fonts.monospace} !important;
+  }
+
+  ${mediaqueries.desktop`
+      left: -26px;
+    `};
+
+  ${mediaqueries.tablet`
+    max-width: 526px;
+    left: 0;
+
+    textarea,
+    pre {
+      padding: 20px !important;
+    }
+  `};
+
+  ${mediaqueries.phablet`
+    border-radius: 0;
+    margin: 0 auto 25px;
+    overflow: initial;
+    width: unset;
+    max-width: unset;
+    float: left;
+    min-width: 100%;
+    overflow: initial;
+    position: relative;
+  `};
 `;

@@ -1,9 +1,9 @@
 module.exports = ({
-  contentAuthors = "content/authors",
-  contentPosts = "content/posts",
+  contentAuthors = 'content/authors',
+  contentPosts = 'content/posts',
 }) => ({
   mapping: {
-    "Mdx.frontmatter.author": `AuthorsYaml`,
+    'Mdx.frontmatter.author': `AuthorsYaml`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -45,14 +45,14 @@ module.exports = ({
           { resolve: `gatsby-remark-numbered-footnotes` },
           { resolve: `gatsby-remark-smartypants` },
           {
-            resolve: "gatsby-remark-external-links",
+            resolve: 'gatsby-remark-external-links',
             options: {
-              target: "_blank",
-              rel: "noreferrer",
+              target: '_blank',
+              rel: 'noreferrer', // eslint-disable-line unicorn/prevent-abbreviations
             },
           },
         ],
-        remarkPlugins: [require(`remark-slug`)],
+        remarkPlugins: [require(`remark-slug`)], // eslint-disable-line global-require
       },
     },
     {

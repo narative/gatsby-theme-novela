@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - 8
+  - 10
+  - 12
+
+sudo: false
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+env:
+  global:
+    - TEST=1
+
+matrix:
+  fast_finish: true
+
+  include:
+    - node_js: 10
+      env: TEST=0 LINT=1
+
+script:
+  - sh -c "if [ '$LINT' = '1' ]; then yarn lint; fi"
+
+notifications:
+  email: false
