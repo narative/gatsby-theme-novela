@@ -7,6 +7,7 @@ const Cta = styled.a`
   padding: 1rem 2rem;
   font-size: 20px;
   text-decoration: none;
+  margin: 0 auto 2rem;
   color: ${p => p.theme.colors.accent};
   font-family: ${p => p.theme.fonts.sansSerif};
   transition: ${p => p.theme.colorModeTransition};
