@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { Link, navigate } from "gatsby";
+import { Link, navigate, graphql, useStaticQuery } from "gatsby";
 import { useColorMode } from "theme-ui";
 
 import Section from "@components/Section";
@@ -14,12 +14,24 @@ import {
   getBreakpointFromTheme,
 } from "@utils";
 
+const siteQuery = graphql`
+  {
+    sitePlugin(name: { eq: "@narative/gatsby-theme-novela" }) {
+      pluginOptions {
+        basePath
+      }
+    }
+  }
+`
+
 function NavigationHeader() {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
+  const { sitePlugin } = useStaticQuery(siteQuery);
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
+  const { basePath } = sitePlugin.pluginOptions;
 
   useEffect(() => {
     const { width } = getWindowDimensions();
@@ -27,7 +39,7 @@ function NavigationHeader() {
 
     const prev = localStorage.getItem("previousPath");
     const previousPathWasHomepage =
-      prev === "/" || (prev && prev.includes("/page/"));
+      prev === basePath || (prev && prev.includes("/page/"));
     const isNotPaginated = !location.pathname.includes("/page/");
 
     setShowBackArrow(
@@ -40,7 +52,7 @@ function NavigationHeader() {
     <Section>
       <NavContainer>
         <LogoLink
-          to="/"
+          to={basePath}
           data-a11y="false"
           title="Navigate back to the homepage"
           aria-label="Navigate back to the homepage"
