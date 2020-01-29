@@ -22,6 +22,7 @@ import ArticleShare from '../sections/article/Article.Share';
 import { Template } from '@types';
 
 import 'katex/dist/katex.min.css';
+import './mobile-katex.css';
 
 const siteQuery = graphql`
   {
