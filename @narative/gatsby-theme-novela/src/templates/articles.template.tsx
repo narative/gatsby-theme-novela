@@ -12,7 +12,6 @@ import ArticlesList from '../sections/articles/Articles.List';
 import { Template } from '@types';
 
 import 'katex/dist/katex.min.css';
-import './mobile-katex.css'
 
 const ArticlesPage: Template = ({ location, pageContext }) => {
   const articles = pageContext.group;

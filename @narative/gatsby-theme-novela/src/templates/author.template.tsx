@@ -12,7 +12,6 @@ import AuthorArticles from '../sections/author/Author.Articles';
 import { Template } from '@types';
 
 import 'katex/dist/katex.min.css';
-import './mobile-katex.css';
 
 const ArticlesPage: Template = ({ location, pageContext }) => {
   const author = pageContext.additionalContext.author;
