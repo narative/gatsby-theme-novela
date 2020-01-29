@@ -1,15 +1,17 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import Section from "@components/Section";
-import SEO from "@components/SEO";
-import Layout from "@components/Layout";
-import Paginator from "@components/Navigation/Navigation.Paginator";
+import Section from '@components/Section';
+import SEO from '@components/SEO';
+import Layout from '@components/Layout';
+import Paginator from '@components/Navigation/Navigation.Paginator';
 
-import AuthorHero from "../sections/author/Author.Hero";
-import AuthorArticles from "../sections/author/Author.Articles";
+import AuthorHero from '../sections/author/Author.Hero';
+import AuthorArticles from '../sections/author/Author.Articles';
 
-import { Template } from "@types";
+import { Template } from '@types';
+
+import 'katex/dist/katex.min.css';
 
 const ArticlesPage: Template = ({ location, pageContext }) => {
   const author = pageContext.additionalContext.author;
@@ -32,7 +34,7 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
       <AuthorsGradient />
     </Layout>
   );
-}
+};
 
 export default ArticlesPage;
 
