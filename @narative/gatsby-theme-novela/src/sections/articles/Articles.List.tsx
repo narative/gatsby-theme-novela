@@ -240,7 +240,7 @@ const listItemTile = p => css`
   }
 
   ${mediaqueries.phablet`
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
