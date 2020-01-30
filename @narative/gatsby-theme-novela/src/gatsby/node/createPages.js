@@ -33,7 +33,7 @@ function slugify(string, base) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036F]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/[^\da-z]+/g, '-')
     .replace(/(^-|-$)+/g, '');
 
   return `${base}/${slug}`.replace(/\/\/+/g, '/');
@@ -261,15 +261,15 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   if (tags) {
     const uniqueTags = [
       ...new Set(
-        articles.reduce((acc, article) => {
-          return [...acc, ...article.tags];
+        articles.reduce((accumulator, article) => {
+          return [...accumulator, ...article.tags];
         }, []),
       ),
     ];
 
     if (uniqueTags.length > 0) {
-      // TODO(eugene): need to implements, [/tag] page.
-      log('Creating', 'tags pages');
+      // TODO: need to implements, [/tag] page.
+      // log('Creating', 'tags pages');
 
       /**
        * Creating main tag pages example
