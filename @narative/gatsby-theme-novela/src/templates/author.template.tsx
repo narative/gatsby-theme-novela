@@ -15,6 +15,8 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
   const author = pageContext.additionalContext.author;
   const articles = pageContext.group;
 
+  const { tags } = pageContext;
+
   return (
     <Layout>
       <SEO
@@ -24,7 +26,7 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
       />
       <Section narrow>
         <AuthorHero author={author} />
-        <AuthorArticles articles={articles} />
+        <AuthorArticles articles={articles} tags={tags} />
         <AuthorPaginator>
           <Paginator {...pageContext} />
         </AuthorPaginator>
@@ -32,7 +34,7 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
       <AuthorsGradient />
     </Layout>
   );
-}
+};
 
 export default ArticlesPage;
 

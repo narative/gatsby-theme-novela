@@ -87,6 +87,7 @@ const ArticleSEO: React.FC<ArticleSEOProps> = ({
       published={article.date}
       pathname={location.href}
       canonicalUrl={article.canonicalUrl}
+      tags={article.tags}
     >
       <script type="application/ld+json">{microdata}</script>
     </SEO>

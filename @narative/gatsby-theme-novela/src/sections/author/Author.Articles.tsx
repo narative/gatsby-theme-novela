@@ -8,12 +8,13 @@ import ArticlesList from "../articles/Articles.List";
 
 interface AuthorArticlesProps {
   articles: IArticle[];
+  tags?: string[];
 }
 
-const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
+const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles, tags }) => {
   return (
     <AuthorArticlesContainer>
-      <ArticlesList articles={articles} alwaysShowAllDetails />
+      <ArticlesList articles={articles} tags={tags} alwaysShowAllDetails />
     </AuthorArticlesContainer>
   );
 };
