@@ -1,3 +1,6 @@
+# for vscode
+.vscode
+
 # Logs
 logs
 *.log

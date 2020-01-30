@@ -34,7 +34,7 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
       <AuthorsGradient />
     </Layout>
   );
-}
+};
 
 export default ArticlesPage;
 
