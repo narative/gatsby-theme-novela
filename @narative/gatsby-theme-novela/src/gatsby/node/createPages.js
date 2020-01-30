@@ -33,7 +33,7 @@ function slugify(string, base) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036F]/g, '')
-    .replace(/[^\da-z]+/g, '-')
+    .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)+/g, '');
 
   return `${base}/${slug}`.replace(/\/\/+/g, '/');
