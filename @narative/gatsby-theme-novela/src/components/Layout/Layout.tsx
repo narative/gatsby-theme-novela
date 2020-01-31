@@ -16,6 +16,14 @@ import { globalStyles } from '@styles';
  */
 const Layout: React.FC<{}> = ({ children }) => {
   const [colorMode] = useColorMode();
+  const isDark = colorMode === `dark`;
+
+  //Change all KaTeX colors
+  Array.from(document.getElementsByClassName('katex-display')).forEach(
+    element => {
+      element.style.color = isDark ? 'white' : 'black';
+    },
+  );
 
   useEffect(() => {
     parent.postMessage({ theme: colorMode }, '*');
@@ -31,7 +39,7 @@ const Layout: React.FC<{}> = ({ children }) => {
       </Container>
     </ArticlesContextProvider>
   );
-}
+};
 
 export default Layout;
 
