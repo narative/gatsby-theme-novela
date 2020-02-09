@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Global } from '@emotion/core';
 import styled from '@emotion/styled';
 import { useColorMode } from 'theme-ui';
 
 import NavigationFooter from '@components/Navigation/Navigation.Footer';
 import NavigationHeader from '@components/Navigation/Navigation.Header';
+import NavigationSideMenu from '@components/SideMenu/SideMenu';
 import ArticlesContextProvider from '../../sections/articles/Articles.List.Context';
 
 import { globalStyles } from '@styles';
@@ -16,6 +17,7 @@ import { globalStyles } from '@styles';
  */
 const Layout: React.FC<{}> = ({ children }) => {
   const [colorMode] = useColorMode();
+  const [showSideMenu, setShowSideMenu] = useState<boolean>(false);
 
   useEffect(() => {
     parent.postMessage({ theme: colorMode }, '*');
@@ -24,14 +26,20 @@ const Layout: React.FC<{}> = ({ children }) => {
   return (
     <ArticlesContextProvider>
       <Container>
+        {showSideMenu && (
+          <NavigationSideMenu
+            setShowSideMenu={setShowSideMenu}
+            showSideMenu={showSideMenu}
+          />
+        )}
         <Global styles={globalStyles} />
-        <NavigationHeader />
+        <NavigationHeader setShowSideMenu={setShowSideMenu} />
         {children}
         <NavigationFooter />
       </Container>
     </ArticlesContextProvider>
   );
-}
+};
 
 export default Layout;
 

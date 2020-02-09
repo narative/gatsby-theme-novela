@@ -22,6 +22,7 @@ import Copied from './ui/Copied.Icon';
 import Copy from './ui/Copy.Icon';
 import Ex from './ui/Ex.Icon';
 import Link from './ui/Link.Icon';
+import Menu from './ui/Menu.Icon';
 import ToggleOpen from './ui/ToggleOpen.Icon';
 import ToggleClose from './ui/ToggleClose.Icon';
 import Rows from './ui/Rows.Icon';
@@ -50,6 +51,7 @@ export default {
   Copy,
   Ex,
   Link,
+  Menu,
   ToggleClose,
   ToggleOpen,
   Rows,

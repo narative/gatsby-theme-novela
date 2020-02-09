@@ -28,6 +28,7 @@ module.exports.local = {
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           timeToRead
+          category
           excerpt
           canonical_url
           subscription

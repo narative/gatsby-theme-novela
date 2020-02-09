@@ -5,6 +5,7 @@ module.exports = ({ actions }) => {
     type PluginOptions {
       basePath: String
       rootPath: String
+      isSideMenuEnabled: Boolean
     }
     type SitePlugin implements Node {
       pluginOptions: PluginOptions

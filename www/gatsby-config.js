@@ -54,6 +54,7 @@ const plugins = [
       basePath: "/",
       authorsPage: true,
       mailchimp: true,
+      isSideMenuEnabled: true,
       sources: {
         local: true,
         contentful: false,
