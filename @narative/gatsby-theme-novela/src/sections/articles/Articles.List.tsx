@@ -368,6 +368,11 @@ const Tags = styled.div<{
   transition: transform 0.33s var(--ease-out-quart);
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   margin: 10px 0;
+
+  ${mediaqueries.phablet`
+    max-width: 100%;
+    padding: 10px 15px 10px;
+  `}
 `;
 
 const MetaData = styled.div<{
