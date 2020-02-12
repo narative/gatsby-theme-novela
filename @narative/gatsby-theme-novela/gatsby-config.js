@@ -181,8 +181,6 @@ module.exports = ({
               }
               `,
             output: '/rss.xml',
-             /// TODO: how to set custom title
-             title: "Your Site's RSS Feed",
           },
         ],
       },
