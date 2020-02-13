@@ -77,6 +77,7 @@ module.exports.contentful = {
     return {
       ...article,
       author,
+      slug: article.fields.slug,
       body: article.body.childMdx.body,
       timeToRead: article.body.childMdx.timeToRead,
     };

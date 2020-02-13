@@ -116,6 +116,17 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     createParentChildLink({ parent: fileNode, child: node });
   }
 
+  if (node.internal.type === `ContentfulArticle`) {
+    createNodeField({
+      node,
+      name: `slug`,
+      value: generateSlug(
+        basePath,
+        generateArticlePermalink(slugify(node.slug || node.title), node.date),
+      ),
+    });
+  }
+
   if (node.internal.type === `ContentfulAuthor`) {
     createNodeField({
       node,
