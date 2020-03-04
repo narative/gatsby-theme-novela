@@ -35,7 +35,7 @@ const siteQuery = graphql`
   }
 `;
 
-const Article: Template = ({ pageContext, location }) => {
+const useArticle = ({ pageContext }) => {
   const contentSectionRef = useRef<HTMLElement>(null);
 
   const [hasCalculated, setHasCalculated] = useState<boolean>(false);
@@ -79,6 +79,30 @@ const Article: Template = ({ pageContext, location }) => {
 
     return () => window.removeEventListener("resize", calculateBodySize);
   }, []);
+
+  return {
+    contentSectionRef,
+    contentHeight,
+    article,
+    authors,
+    mailchimp,
+    next,
+    name,
+  };
+};
+
+const Article: Template = ({ pageContext, location }) => {
+  const {
+    contentSectionRef,
+    contentHeight,
+    article,
+    authors,
+    mailchimp,
+    next,
+    name,
+  } = useArticle({
+    pageContext,
+  });
 
   return (
     <Layout>
@@ -180,3 +204,22 @@ const FooterNext = styled.h3`
 const FooterSpacer = styled.div`
   margin-bottom: 65px;
 `;
+
+export {
+  Layout,
+  ArticleSEO,
+  ArticleHero,
+  ArticleAside,
+  MobileControls,
+  ArticleControls,
+  ArticleBody,
+  MDXRenderer,
+  ArticleShare,
+  Progress,
+  useArticle,
+  Subscription,
+  NextArticle,
+  FooterNext,
+  FooterSpacer,
+  ArticlesNext,
+};
