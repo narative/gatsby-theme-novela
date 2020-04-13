@@ -44,13 +44,21 @@ But it takes more than good ideas to build and grow a business. It takes people 
 
 But it takes more than good ideas to build and grow a business. It takes people to bring them into reality. Are those people collaborating and sharing their expertise, or are they in conflict and keeping it to themselves?
 
-```js {5-6}
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import styled from "@emotion/styled";
+## LaTeX Test
 
-import SocialIcons from "@icons";
-import mediaqueries from "@styles/media";
+$$
+F=ma
+$$
+
+This is a LaTeX test: $a^2 + b^2 = c^2$
+
+```js {5-6}
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import styled from '@emotion/styled';
+
+import SocialIcons from '@icons';
+import mediaqueries from '@styles/media';
 
 const icons = {
   dribbble: SocialIcons.DribbbleIcon,
@@ -58,10 +66,10 @@ const icons = {
   twitter: SocialIcons.TwitterIcon,
   facebook: SocialIcons.FacebookIcon,
   instagram: SocialIcons.InstagramIcon,
-  github: SocialIcons.GithubIcon
+  github: SocialIcons.GithubIcon,
 };
 
-function SocialLinks({ fill = "#73737D" }: { fill: string }) {
+function SocialLinks({ fill = '#73737D' }: { fill: string }) {
   const result = useStaticQuery(socialQuery);
   const socialOptions = result.allSite.edges[0].node.siteMetadata.social;
 
@@ -94,9 +102,9 @@ At Narative, we’ve been fans of Gatsby from day one, using it to build perform
 const Wrapper = ({ children }) => (
   <div
     style={{
-      background: "papayawhip",
-      width: "100%",
-      padding: "2rem"
+      background: 'papayawhip',
+      width: '100%',
+      padding: '2rem',
     }}
   >
     {children}
@@ -104,7 +112,7 @@ const Wrapper = ({ children }) => (
 );
 
 const Title = () => (
-  <h2 style={{ color: "palevioletred", textAlign: "center" }}>
+  <h2 style={{ color: 'palevioletred', textAlign: 'center' }}>
     Hello World!
     <br />
     Try Novela Gatsby Theme.
@@ -114,7 +122,7 @@ const Title = () => (
 render(
   <Wrapper>
     <Title />
-  </Wrapper>
+  </Wrapper>,
 );
 ```
 
@@ -161,7 +169,7 @@ function MDX({ content, children, ...props }) {
   return (
     <MDXProvider components={components}>
       <MDXBody>
-        <MDXRenderer isDark={colorMode === "dark"} {...props}>
+        <MDXRenderer isDark={colorMode === 'dark'} {...props}>
           {content}
         </MDXRenderer>
         {children}

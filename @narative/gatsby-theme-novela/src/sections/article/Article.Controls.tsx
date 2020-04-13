@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import { useColorMode } from "theme-ui";
+import React, { useState } from 'react';
+import styled from '@emotion/styled';
+import { useColorMode } from 'theme-ui';
 
-import mediaqueries from "@styles/media";
-import { copyToClipboard } from "@utils";
+import mediaqueries from '@styles/media';
+import { copyToClipboard } from '@utils';
 
 const ShareDarkModeOffIcon: React.FC<{}> = () => (
   <svg
@@ -46,6 +46,13 @@ const DarkModeToggle: React.FC<{}> = () => {
   function toggleColorMode(event) {
     event.preventDefault();
     setColorMode(isDark ? `light` : `dark`);
+
+    //Change all KaTeX colors
+    Array.from(document.getElementsByClassName('katex-display')).forEach(
+      element => {
+        element.style.color = isDark ? 'white' : 'black';
+      },
+    );
   }
 
   return (
@@ -111,17 +118,17 @@ const NavControls = styled.div`
 const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`
   position: absolute;
   padding: 4px 13px;
-  background: ${p => (p.isDark ? "#000" : "rgba(0,0,0,0.1)")};
-  color: ${p => (p.isDark ? "#fff" : "#000")};
+  background: ${p => (p.isDark ? '#000' : 'rgba(0,0,0,0.1)')};
+  color: ${p => (p.isDark ? '#fff' : '#000')};
   border-radius: 5px;
   font-size: 14px;
   top: -35px;
   opacity: ${p => (p.hasCopied ? 1 : 0)};
-  transform: ${p => (p.hasCopied ? "translateY(-3px)" : "none")};
+  transform: ${p => (p.hasCopied ? 'translateY(-3px)' : 'none')};
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -131,7 +138,7 @@ const ToolTip = styled.div<{ isDark: boolean; hasCopied: boolean }>`
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid ${p => (p.isDark ? "#000" : "rgba(0,0,0,0.1)")};
+    border-top: 6px solid ${p => (p.isDark ? '#000' : 'rgba(0,0,0,0.1)')};
   }
 `;
 
@@ -170,15 +177,15 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  border: ${p => (p.isDark ? "4px" : "2px")} solid
+  border: ${p => (p.isDark ? '4px' : '2px')} solid
     ${p => p.theme.colors.primary};
   background: ${p => p.theme.colors.primary};
   transform: scale(${p => (p.isDark ? 0.55 : 1)});
   transition: all 0.45s ease;
-  overflow: ${p => (p.isDark ? "visible" : "hidden")};
+  overflow: ${p => (p.isDark ? 'visible' : 'hidden')};
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     right: -9px;
     top: -9px;
@@ -186,13 +193,13 @@ const MoonOrSun = styled.div<{ isDark: boolean }>`
     width: 24px;
     border: 2px solid ${p => p.theme.colors.primary};
     border-radius: 50%;
-    transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
+    transform: translate(${p => (p.isDark ? '14px, -14px' : '0, 0')});
     opacity: ${p => (p.isDark ? 0 : 1)};
     transition: transform 0.45s ease;
   }
 
   &::after {
-    content: "";
+    content: '';
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -226,7 +233,7 @@ const MoonMask = styled.div<{ isDark: boolean }>`
   border-radius: 50%;
   border: 0;
   background: ${p => p.theme.colors.background};
-  transform: translate(${p => (p.isDark ? "14px, -14px" : "0, 0")});
+  transform: translate(${p => (p.isDark ? '14px, -14px' : '0, 0')});
   opacity: ${p => (p.isDark ? 0 : 1)};
   transition: transform 0.45s ease, ${p => p.theme.colorModeTransition};
 `;
