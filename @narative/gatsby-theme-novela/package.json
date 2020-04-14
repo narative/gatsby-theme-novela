@@ -73,7 +73,7 @@
     "prism-react-renderer": "^0.1.7",
     "react-helmet": "^5.2.1",
     "react-live": "^2.2.0",
-    "react-medium-image-zoom": "^4.0.2",
+    "react-medium-image-zoom": "^3.1.1",
     "react-outside-click-handler": "^1.2.4",
     "remark-slug": "^5.1.2",
     "request": "^2.88.0",
