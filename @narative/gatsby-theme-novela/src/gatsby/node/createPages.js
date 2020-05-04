@@ -55,6 +55,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     pageLength = 6,
     sources = {},
     mailchimp = '',
+    enableTinaCMS = false,
   } = themeOptions;
 
   const { data } = await graphql(`
@@ -94,6 +95,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       log('Querying Authors & Articles source:', 'Local');
       const localAuthors = await graphql(query.local.authors);
       const localArticles = await graphql(query.local.articles);
+      const localAllMdx = await graphql(query.local.allMdx);
 
       dataSources.local.authors = localAuthors.data.authors.edges.map(
         normalize.local.authors,
@@ -102,6 +104,8 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       dataSources.local.articles = localArticles.data.articles.edges.map(
         normalize.local.articles,
       );
+
+      dataSources.local.mdx = localAllMdx.data.allMdx.edges;
     } catch (error) {
       console.error(error);
     }
@@ -173,6 +177,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       basePath,
       skip: pageLength,
       limit: pageLength,
+      enableTinaCMS,
     },
   });
 
@@ -214,6 +219,14 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       next = [...next, articlesThatArentSecret[0]];
     if (articlesThatArentSecret.length === 1) next = [];
 
+    let mdx = {};
+
+    if (enableTinaCMS && local) {
+      [mdx] = dataSources.local.mdx.filter(
+        m => m.node.frontmatter.title === article.title,
+      );
+    }
+
     createPage({
       path: article.slug,
       component: templates.article,
@@ -228,6 +241,8 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
         canonicalUrl: article.canonical_url,
         mailchimp,
         next,
+        enableTinaCMS,
+        mdx,
       },
     });
   });

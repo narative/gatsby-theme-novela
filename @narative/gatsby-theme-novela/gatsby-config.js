@@ -5,6 +5,7 @@ module.exports = ({
   contentPosts = 'content/posts',
   pathPrefix = '',
   sources: { local, contentful } = { local: true, contentful: false },
+  enableTinaCMS = false,
 }) => ({
   pathPrefix,
   mapping: {
@@ -254,6 +255,19 @@ module.exports = ({
       resolve: `gatsby-plugin-emotion`,
       options: {
         displayName: process.env.NODE_ENV === `development`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-tinacms',
+      options: {
+        sidebar: {
+          hidden: !enableTinaCMS,
+          position: "displace",
+        },
+        plugins: [
+          "gatsby-tinacms-git",
+          "gatsby-tinacms-mdx",
+        ],
       },
     },
   ],

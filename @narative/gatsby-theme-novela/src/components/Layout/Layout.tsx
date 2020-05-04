@@ -7,6 +7,8 @@ import NavigationFooter from '@components/Navigation/Navigation.Footer';
 import NavigationHeader from '@components/Navigation/Navigation.Header';
 import ArticlesContextProvider from '../../sections/articles/Articles.List.Context';
 
+import withTinaWithPlugin from './WithTina';
+
 import { globalStyles } from '@styles';
 
 /**
@@ -33,7 +35,7 @@ const Layout: React.FC<{}> = ({ children }) => {
   );
 }
 
-export default Layout;
+export default withTinaWithPlugin(Layout);
 
 const Container = styled.div`
   position: relative;

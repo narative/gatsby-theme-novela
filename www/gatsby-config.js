@@ -62,6 +62,7 @@ const plugins = [
         local: true,
         contentful: false,
       },
+      enableTinaCMS: true,
     },
   },
   {

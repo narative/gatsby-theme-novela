@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { useColorMode } from 'theme-ui';
 
-import Icons from '@icons';
+import Icons from '@novela-icons';
 
 import {
   getHighlightedTextPositioning,

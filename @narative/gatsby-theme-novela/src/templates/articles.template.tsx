@@ -14,9 +14,10 @@ import { Template } from "@types";
 const ArticlesPage: Template = ({ location, pageContext }) => {
   const articles = pageContext.group;
   const authors = pageContext.additionalContext.authors;
+  const enableTinaCMS = pageContext.enableTinaCMS;
 
   return (
-    <Layout>
+    <Layout enableTinaCreate={enableTinaCMS}>
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>

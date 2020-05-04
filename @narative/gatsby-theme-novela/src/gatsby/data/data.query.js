@@ -92,6 +92,22 @@ module.exports.local = {
       }
     }
   }`,
+  allMdx: `{
+    allMdx {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+          }
+          body
+          fileRelativePath
+          rawFrontmatter
+          rawMdxBody
+        }
+      }
+    }
+  }`,
 };
 
 module.exports.contentful = {
