@@ -63,5 +63,8 @@
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "resolutions": {
+    "moment": "2.24.0"
   }
 }

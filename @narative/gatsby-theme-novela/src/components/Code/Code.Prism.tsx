@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "prism-react-renderer/themes/oceanicNext";
 
-import Icons from "@icons";
+import Icons from "@novela-icons";
 import mediaqueries from "@styles/media";
 import { copyToClipboard } from "@utils";
 

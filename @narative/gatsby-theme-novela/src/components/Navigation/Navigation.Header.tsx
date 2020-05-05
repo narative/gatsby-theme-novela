@@ -6,7 +6,7 @@ import { useColorMode } from "theme-ui";
 import Section from "@components/Section";
 import Logo from "@components/Logo";
 
-import Icons from "@icons";
+import Icons from "@novela-icons";
 import mediaqueries from "@styles/media";
 import {
   copyToClipboard,

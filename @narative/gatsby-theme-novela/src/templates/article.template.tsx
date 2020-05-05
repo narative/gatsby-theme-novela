@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import throttle from "lodash/throttle";
 import { graphql, useStaticQuery } from "gatsby";
+import { useLocalMdxForm } from "gatsby-tinacms-mdx";
 
 import Layout from "@components/Layout";
 import MDXRenderer from "@components/MDX";
@@ -11,6 +12,7 @@ import Subscription from "@components/Subscription";
 
 import mediaqueries from "@styles/media";
 import { debounce } from "@utils";
+import ArticleFormOptions from "@novela-tina-config-data";
 
 import ArticleAside from "../sections/article/Article.Aside";
 import ArticleHero from "../sections/article/Article.Hero";
@@ -44,7 +46,9 @@ const Article: Template = ({ pageContext, location }) => {
   const results = useStaticQuery(siteQuery);
   const name = results.allSite.edges[0].node.siteMetadata.name;
 
-  const { article, authors, mailchimp, next } = pageContext;
+  const [mdx] = useLocalMdxForm(pageContext.mdx.node, ArticleFormOptions);
+
+  const { article, authors, mailchimp, next, enableTinaCMS } = pageContext;
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -81,7 +85,7 @@ const Article: Template = ({ pageContext, location }) => {
   }, []);
 
   return (
-    <Layout>
+    <Layout enableTinaCreate={enableTinaCMS}>
       <ArticleSEO article={article} authors={authors} location={location} />
       <ArticleHero article={article} authors={authors} />
       <ArticleAside contentHeight={contentHeight}>
@@ -91,9 +95,15 @@ const Article: Template = ({ pageContext, location }) => {
         <ArticleControls />
       </MobileControls>
       <ArticleBody ref={contentSectionRef}>
-        <MDXRenderer content={article.body}>
-          <ArticleShare />
-        </MDXRenderer>
+        {enableTinaCMS ? (
+          <MDXRenderer content={mdx.body}>
+            <ArticleShare />
+          </MDXRenderer>
+        ) : (
+            <MDXRenderer content={article.body}>
+              <ArticleShare />
+            </MDXRenderer>
+          )}
       </ArticleBody>
       {mailchimp && article.subscription && <Subscription />}
       {next.length > 0 && (
