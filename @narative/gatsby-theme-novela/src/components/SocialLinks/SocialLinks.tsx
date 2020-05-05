@@ -24,6 +24,7 @@ const icons = {
   stackoverflow: Icons.Stackoverflow,
   youtube: Icons.YouTube,
   medium: Icons.Medium,
+  pocket: Icons.Pocket,
   notion: Icons.Notion,
   unsplash: Icons.Unsplash,
   patreon: Icons.Patreon,
