@@ -8,9 +8,7 @@
     "build": "yarn workspace www build",
     "dev": "yarn start",
     "lint": "eslint --ignore-path .gitignore .",
-    "start": "yarn workspace www develop",
-    "bootstrap": "yarn lerna bootstrap",
-    "publish": "yarn lerna version && yarn lerna publish"
+    "start": "yarn workspace www develop"
   },
   "workspaces": [
     "@narative/gatsby-theme-novela",
