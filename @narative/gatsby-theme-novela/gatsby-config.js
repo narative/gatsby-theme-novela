@@ -65,7 +65,7 @@ module.exports = ({
                       date: edge.node.date,
                       url: site.siteMetadata.siteUrl + edge.node.slug,
                       guid: site.siteMetadata.siteUrl + edge.node.slug,
-                      custom_elements: [{ "content:encoded": edge.node.body }],
+                      custom_elements: [{ 'content:encoded': edge.node.body }],
                       author: edge.node.author,
                     };
                   });
@@ -79,7 +79,12 @@ module.exports = ({
                       date: edge.node.date,
                       url: site.siteMetadata.siteUrl + '/' + edge.node.slug,
                       guid: site.siteMetadata.siteUrl + '/' + edge.node.slug,
-                      custom_elements: [{ "content:encoded": edge.node.body.childMarkdownRemark.html }],
+                      custom_elements: [
+                        {
+                          'content:encoded':
+                            edge.node.body.childMarkdownRemark.html,
+                        },
+                      ],
                       author: edge.node.author ? edge.node.author.name : '',
                     };
                   });
@@ -216,12 +221,12 @@ module.exports = ({
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               providers: {
-                include: ["Instagram"]
-              }
-            }
+                include: ['Instagram'],
+              },
+            },
           },
           {
-            resolve: "gatsby-remark-embed-video",
+            resolve: 'gatsby-remark-embed-video',
             options: {
               width: 680,
               ratio: 1.77, // Optional: Defaults to 16/9 = 1.77
@@ -231,10 +236,11 @@ module.exports = ({
               urlOverrides: [
                 {
                   id: 'youtube',
-                  embedURL: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}`,
-                }
-              ] //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
-            }
+                  embedURL: videoId =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ], //Optional: Override URL of a service provider, e.g to enable youtube-nocookie support
+            },
           },
           { resolve: `gatsby-remark-copy-linked-files` },
           { resolve: `gatsby-remark-numbered-footnotes` },
@@ -244,6 +250,13 @@ module.exports = ({
             options: {
               target: '_blank',
               rel: 'noreferrer', // eslint-disable-line unicorn/prevent-abbreviations
+            },
+          },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+              strict: `ignore`,
             },
           },
         ],

@@ -12,12 +12,18 @@
     "@narative/gatsby-theme-novela": "^0.15.0",
     "dotenv": "^8.0.0",
     "gatsby": "^2.13.41",
-    "gatsby-plugin-google-analytics": "^2.1.6",
+    "gatsby-plugin-google-tagmanager": "^2.3.1",
+    "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-mailchimp": "^5.1.2",
     "gatsby-plugin-manifest": "^2.2.4",
+    "gatsby-plugin-robots-txt": "^1.5.0",
+    "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-source-contentful": "^2.1.73",
     "gatsby-source-filesystem": "^2.1.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   }
 }

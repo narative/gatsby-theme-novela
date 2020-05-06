@@ -1,5 +1,5 @@
 # Ignore everything:
-/*
+# /*
 
 # Except these root files:
 !CONTRIBUTING.md
