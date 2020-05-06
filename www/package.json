@@ -4,7 +4,7 @@
   "version": "1.5.0",
   "license": "MIT",
   "scripts": {
-    "build": "echo 'removed build due to it failing: https://github.com/narative/gatsby-theme-novela/issues/249'",
+    "build": "gatsby build",
     "develop": "rm -rf .cache && gatsby develop",
     "clean": "gatsby clean"
   },
