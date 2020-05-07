@@ -243,13 +243,32 @@ module.exports = ({
             },
           },
           { resolve: `gatsby-remark-copy-linked-files` },
-          { resolve: `gatsby-remark-numbered-footnotes` },
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                {
+                  resolve: `gatsby-remark-footnotes`,
+                  options: {
+                    footnoteBackRefPreviousElementDisplay: 'inline',
+                    footnoteBackRefDisplay: 'inline',
+                    // footnoteBackRefInnerText: '^', // Defaults to: "↩"
+                    //use if you want the Wikipedia style ^ link without an underline beneath it
+                    footnoteBackRefAnchorStyle: `text-decoration: none;`,
+                    //use "front" for Wikipedia style ^ links
+                    // footnoteBackRefInnerTextStartPosition: 'front',
+                    useFootnoteMarkerText: false, // Defaults to false
+                  },
+                },
+              ],
+            },
+          },
           { resolve: `gatsby-remark-smartypants` },
           {
             resolve: 'gatsby-remark-external-links',
             options: {
               target: '_blank',
-              rel: 'noreferrer', // eslint-disable-line unicorn/prevent-abbreviations
+              rel: 'noopenner', // eslint-disable-line unicorn/prevent-abbreviations
             },
           },
           {

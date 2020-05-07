@@ -39,8 +39,8 @@ const plugins = [
     options: {
       // contentPosts: "content/posts",
       // contentAuthors: "content/authors",
-      // rootPath: "/",
-      // basePath: "/",
+      rootPath: '/',
+      basePath: '/',
       // authorsPage: true,
       // mailchimp: true,
       // sources: {

@@ -7992,6 +7992,15 @@ gatsby-remark-external-links@0.0.4:
     unist-util-find "^1.0.1"
     unist-util-visit "^1.1.3"
 
+gatsby-remark-footnotes@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-footnotes/-/gatsby-remark-footnotes-0.0.7.tgz#14d5888621765c6b8f60f37ae3eedba4908d7c68"
+  integrity sha512-TMtzhbwred2P0xhkL62RduqWtrGvSpcieWsAsss3Xv6+d4XdiccjtrgNIbV4gvPcFkV1upE1ygJQIV9T04pg/A==
+  dependencies:
+    hast-util-to-html "5.0.0"
+    mdast-util-to-hast "5.0.0"
+    unist-util-visit "1.4.0"
+
 gatsby-remark-images@^3.1.7:
   version "3.1.39"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.39.tgz#2488a10580993c877d56626b3347b9f63a5df494"
@@ -8017,13 +8026,6 @@ gatsby-remark-katex@^3.3.1:
     "@babel/runtime" "^7.9.6"
     remark-math "^1.0.6"
     unist-util-visit "^1.4.1"
-
-gatsby-remark-numbered-footnotes@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-numbered-footnotes/-/gatsby-remark-numbered-footnotes-1.0.1.tgz#b922357d44b953dfb9b8754676f161e048a98f02"
-  integrity sha512-eqb/vxhniIASyoNYRbATpHVD1owtRAM2vTLyUJTz5pe3RugU99n1xNyeYHeg6eb98iyoWi2EaEskI4+reytN4A==
-  dependencies:
-    remark-numbered-footnotes "^1.0.1"
 
 gatsby-remark-prismjs@^3.3.3:
   version "3.3.28"
@@ -9045,6 +9047,22 @@ hast-util-raw@^4.0.0:
     web-namespaces "^1.0.0"
     xtend "^4.0.1"
     zwitch "^1.0.0"
+
+hast-util-to-html@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-to-html/-/hast-util-to-html-5.0.0.tgz#8b5c9710adb0689e3603f552f3104de2507aca35"
+  integrity sha512-vYbSEixfYD3CIqd1rN1Q4T0z0Tyodht0jNst940ESz9g7eaFc0FJADMkdVvlHqDsXVok0vji8FukrBfAH91BWQ==
+  dependencies:
+    ccount "^1.0.0"
+    comma-separated-tokens "^1.0.1"
+    hast-util-is-element "^1.0.0"
+    hast-util-whitespace "^1.0.0"
+    html-void-elements "^1.0.0"
+    property-information "^5.0.0"
+    space-separated-tokens "^1.0.0"
+    stringify-entities "^1.0.1"
+    unist-util-is "^2.0.0"
+    xtend "^4.0.1"
 
 hast-util-to-html@^4.0.1:
   version "4.0.1"
@@ -11508,6 +11526,23 @@ mdast-util-definitions@^1.2.0, mdast-util-definitions@^1.2.5:
   integrity sha512-CJXEdoLfiISCDc2JB6QLb79pYfI6+GcIH+W2ox9nMc7od0Pz+bovcHsiq29xAQY6ayqe/9CsK2VzkSJdg1pFYA==
   dependencies:
     unist-util-visit "^1.0.0"
+
+mdast-util-to-hast@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-to-hast/-/mdast-util-to-hast-5.0.0.tgz#42ca287ee88fcf0a57123816215d5db507b682a7"
+  integrity sha512-Yxx+/mdvhOaz3u4+UHokVMF038IgMIzgnEexjJcFaG3k47RHDEYCRZZE/YWO8pjwkyqT3UdTjCrX89ljkNoxCg==
+  dependencies:
+    collapse-white-space "^1.0.0"
+    detab "^2.0.0"
+    mdast-util-definitions "^1.2.0"
+    mdurl "^1.0.1"
+    trim "0.0.1"
+    trim-lines "^1.0.0"
+    unist-builder "^1.0.1"
+    unist-util-generated "^1.1.0"
+    unist-util-position "^3.0.0"
+    unist-util-visit "^1.1.0"
+    xtend "^4.0.1"
 
 mdast-util-to-hast@6.0.2:
   version "6.0.2"
@@ -14697,13 +14732,6 @@ remark-mdx@^1.5.3:
     remark-parse "7.0.2"
     unified "8.4.2"
 
-remark-numbered-footnotes@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/remark-numbered-footnotes/-/remark-numbered-footnotes-1.1.0.tgz#6c2f825488dd9fc7f691beb5e6f989880c004437"
-  integrity sha512-1clY6IdWs3Ppv/IsdEVzvM9HxUNDkIicEU0lhdqmxDv2I/qaqDufSYSXmtsNti7j8/B1z93WamT6iDWGzkiTpA==
-  dependencies:
-    unist-util-visit "^1.3.1"
-
 remark-parse@7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-7.0.2.tgz#41e7170d9c1d96c3d32cf1109600a9ed50dba7cf"
@@ -17265,6 +17293,13 @@ unist-util-visit-parents@^3.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^4.0.0"
 
+unist-util-visit@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.0.tgz#1cb763647186dc26f5e1df5db6bd1e48b3cc2fb1"
+  integrity sha512-FiGu34ziNsZA3ZUteZxSFaczIjGmksfSgdKqBfOejrrfzyUy5b7YrlzT1Bcvi+djkYDituJDy2XB7tGTeBieKw==
+  dependencies:
+    unist-util-visit-parents "^2.0.0"
+
 unist-util-visit@2.0.1, unist-util-visit@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-2.0.1.tgz#b4e1c1cb414250c6b3cb386b8e461d79312108ae"
@@ -17274,7 +17309,7 @@ unist-util-visit@2.0.1, unist-util-visit@^2.0.0:
     unist-util-is "^4.0.0"
     unist-util-visit-parents "^3.0.0"
 
-unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.1.3, unist-util-visit@^1.3.1, unist-util-visit@^1.4.1:
+unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.1.3, unist-util-visit@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.1.tgz#4724aaa8486e6ee6e26d7ff3c8685960d560b1e3"
   integrity sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==

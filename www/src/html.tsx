@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
 
-export default props => (
+export default (props) => (
   <html {...props.htmlAttributes}>
     <head>
-
       <meta charSet="utf-8" />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
@@ -11,7 +10,7 @@ export default props => (
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <script
-        dangerouslySetInnerHTML={{ __html: `document.domain = "narative.co"` }}
+        dangerouslySetInnerHTML={{ __html: `document.domain = "pil0t.app"` }}
       />
       {props.headComponents}
     </head>
