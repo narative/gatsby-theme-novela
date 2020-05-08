@@ -4,6 +4,10 @@ module.exports = ({ routerProps, prevRouterProps, getSavedScrollPosition }) => {
   const currentPosition = getSavedScrollPosition(routerProps.location);
   const topOfPage = [0, 0];
 
+  if (routerProps.location.hash.includes('#fn')) {
+    return false;
+  }
+
   if (routerProps.location.action === 'POP' && currentPosition) {
     window.scrollTo(...currentPosition);
   } else {
@@ -17,6 +21,6 @@ module.exports = ({ routerProps, prevRouterProps, getSavedScrollPosition }) => {
       prevRouterProps.location.pathname,
     );
   }
-
+  // FIXME: Make various test behaviour and make condition and test it!
   return false;
 };
