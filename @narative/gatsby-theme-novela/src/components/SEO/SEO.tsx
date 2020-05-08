@@ -18,7 +18,7 @@
  */
 
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
 interface HelmetProps {
@@ -80,7 +80,7 @@ const SEO: React.FC<HelmetProps> = ({
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
-  const twitter = site.social.find(option => option.name === 'twitter') || {};
+  const twitter = site.social.find((option) => option.name === 'twitter') || {};
 
   const fullURL = (path: string) =>
     path ? `${site.siteUrl}${path}` : site.siteUrl;
