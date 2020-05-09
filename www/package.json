@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@narative/gatsby-theme-novela": "0.15.0",
+    "@pil0t/gatsby-theme-novela-dolim": "^0.0.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.21.20",
     "gatsby-plugin-google-tagmanager": "^2.3.1",

@@ -35,7 +35,7 @@ const siteMetadata = {
 
 const plugins = [
   {
-    resolve: '@narative/gatsby-theme-novela',
+    resolve: '@pil0t/gatsby-theme-novela-dolim',
     options: {
       // contentPosts: "content/posts",
       // contentAuthors: "content/authors",
@@ -114,13 +114,13 @@ const plugins = [
       anonymize: false,
     },
   },
-  {
-    resolve: 'gatsby-plugin-mailchimp',
-    options: {
-      endpoint:
-        'https://narative.us19.list-manage.com/subscribe/post?u=65ef169332a03669b9538f6ef&amp;id=c55c426282',
-    },
-  },
+  // {
+  //   resolve: 'gatsby-plugin-mailchimp',
+  //   options: {
+  //     endpoint:
+  //       'https://narative.us19.list-manage.com/subscribe/post?u=65ef169332a03669b9538f6ef&amp;id=c55c426282',
+  //   },
+  // },
 ];
 
 /**

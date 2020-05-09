@@ -11,7 +11,7 @@
     "start": "yarn workspace www develop"
   },
   "workspaces": [
-    "@narative/gatsby-theme-novela",
+    "@pil0t/gatsby-theme-novela-dolim",
     "www"
   ],
   "devDependencies": {

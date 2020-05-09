@@ -1,8 +1,8 @@
 {
-  "name": "@narative/gatsby-theme-novela",
-  "author": "dennis@narative.co",
-  "repository": "https://github.com/narative/gatsby-theme-novela",
-  "version": "0.15.0",
+  "name": "@pil0t/gatsby-theme-novela-dolim",
+  "author": "limdongyoung0@gmail.com",
+  "repository": "https://github.com/imdigo/gatsby-theme-novela-dolim",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
