@@ -8,7 +8,8 @@
     "build": "yarn workspace www build",
     "dev": "yarn start",
     "lint": "eslint --ignore-path .gitignore .",
-    "start": "yarn workspace www develop"
+    "start": "yarn workspace www develop",
+    "serve": "yarn workspace www serve"
   },
   "workspaces": [
     "@pil0t/gatsby-theme-novela-dolim",

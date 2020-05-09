@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "rm -rf .cache && gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "serve": "gatsby serve"
   },
   "dependencies": {
     "@pil0t/gatsby-theme-novela-dolim": "^0.0.1",
