@@ -14,6 +14,7 @@ import Headings from "@components/Headings";
 import HorizontalRule from "@components/HorizontalRule";
 import Lists from "@components/Lists";
 import Paragraph from "@components/Paragraph";
+import Cta from "@components/Cta";
 import Tables from "@components/Tables";
 import { ImageZoom } from "@components/Image";
 import Figcaption from "@components/Figcaption";
@@ -37,6 +38,7 @@ const components = {
   p: Paragraph,
   code: Code.Prism,
   pre: Code.Pre,
+  cta: Cta,
   table: Tables.Table,
   thead: Tables.Head,
   th: Tables.HeadCell,
