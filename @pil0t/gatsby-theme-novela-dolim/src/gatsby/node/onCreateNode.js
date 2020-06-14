@@ -26,7 +26,7 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       slug,
     };
 
-    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, match => {
+    const permalink = articlePermalinkFormat.replace(/(:[a-z_]+)/g, (match) => {
       const key = match.substr(1);
       if (permalinkData.hasOwnProperty(key)) {
         return permalinkData[key];
@@ -42,13 +42,17 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
   }
 
   function generateSlug(...arguments_) {
-    return `/${arguments_.join('/')}`.toLowerCase().replace(/\/\/+/g, '/');
+    return `/${arguments_.join('/')}`.replace(/\/\/+/g, '/');
   }
 
   // ///////////////////////////////////////////////////////
 
   if (node.internal.type === `AuthorsYaml`) {
-    const slug = node.slug ? `/${node.slug}` : slugify(node.name);
+    const slug = node.slug
+      ? `/${node.slug}`
+      : slugify(node.name, {
+          lower: true,
+        });
 
     const fieldData = {
       ...node,
@@ -87,7 +91,9 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
       slug: generateSlug(
         basePath,
         generateArticlePermalink(
-          slugify(node.frontmatter.slug || node.frontmatter.title),
+          slugify(node.frontmatter.slug || node.frontmatter.title, {
+            lower: true,
+          }),
           node.frontmatter.date,
         ),
       ),
@@ -120,7 +126,13 @@ module.exports = ({ node, actions, getNode, createNodeId }, themeOptions) => {
     createNodeField({
       node,
       name: `slug`,
-      value: generateSlug(basePath, 'authors', slugify(node.name)),
+      value: generateSlug(
+        basePath,
+        'authors',
+        slugify(node.name, {
+          lower: true,
+        }),
+      ),
     });
 
     createNodeField({

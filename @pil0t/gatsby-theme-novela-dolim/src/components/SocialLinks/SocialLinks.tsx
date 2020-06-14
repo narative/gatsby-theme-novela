@@ -30,11 +30,12 @@ const icons = {
   paypal: Icons.Paypal,
   digitalocean: Icons.DigitalOcean,
   tripadvisor: Icons.TripAdvisor,
+  buymeacoffee: Icons.Buymeacoffee,
   mailto: Icons.Mailto,
 };
 
 const getHostname = url => {
-  return new URL(url.toLowerCase()).hostname.replace(/[.-]|www|com|net|org/g,'').split('.')[0];
+  return new URL(url.toLowerCase()).hostname.replace(/www|com|net|\.so|org|[.-]/g,'').split('.')[0];
 };
 
 const getServicename = url => {

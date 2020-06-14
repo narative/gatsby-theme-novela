@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/narative/gatsby-theme-novela/compare/www@1.6.0...www@1.6.1) (2020-06-12)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+# [1.6.0](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.9...www@1.6.0) (2020-05-27)
+
+
+### Features
+
+* mdx media blocks ([770618e](https://github.com/narative/gatsby-theme-novela/commit/770618e1bef93f08ea5f951c2230ac5104e967c9))
+
+
+
+
+
+## [1.5.9](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.8...www@1.5.9) (2020-05-27)
+
+
+### Bug Fixes
+
+* **MDXRenderer:** adding full-width for .gif ([2127daa](https://github.com/narative/gatsby-theme-novela/commit/2127daa0f6b89f62b992181dfda64d3a8550794b))
+
+
+
+
+
+## [1.5.8](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.7...www@1.5.8) (2020-05-22)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.7](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.6...www@1.5.7) (2020-05-18)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.6](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.5...www@1.5.6) (2020-05-12)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.5](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.4...www@1.5.5) (2020-05-09)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.4](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.3...www@1.5.4) (2020-05-08)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.3](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.2...www@1.5.3) (2020-05-07)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.2](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.1...www@1.5.2) (2020-05-07)
+
+**Note:** Version bump only for package www
+
+
+
+
+
+## [1.5.1](https://github.com/narative/gatsby-theme-novela/compare/www@1.5.0...www@1.5.1) (2020-05-06)
+
+**Note:** Version bump only for package www
+
+
+
+
+
 # [1.5.0](https://github.com/narative/gatsby-theme-novela/compare/www@1.4.6...www@1.5.0) (2020-05-05)
 
 

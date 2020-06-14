@@ -221,7 +221,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
         article,
         authors: authorsThatWroteTheArticle,
         basePath,
-        permalink: `${data.site.siteMetadata.siteUrl}/${article.slug}/`,
+        permalink: `${data.site.siteMetadata.siteUrl}${article.slug}/`,
         slug: article.slug,
         id: article.id,
         title: article.title,

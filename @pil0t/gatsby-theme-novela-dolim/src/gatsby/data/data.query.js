@@ -96,7 +96,7 @@ module.exports.local = {
 
 module.exports.contentful = {
   articles: `{
-    articles: allContentfulPost(sort: {fields: [date, title], order: DESC}, limit: 1000) {
+    articles: allContentfulArticle(sort: {fields: [date, title], order: DESC}, limit: 1000) {
       edges {
         node {
           body {

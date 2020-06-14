@@ -2,7 +2,7 @@
   "name": "@pil0t/gatsby-theme-novela-dolim",
   "author": "limdongyoung0@gmail.com",
   "repository": "https://github.com/imdigo/gatsby-theme-novela-dolim",
-  "version": "0.0.2",
+  "version": "0.16.1",
   "main": "index.js",
   "license": "MIT",
   "keywords": [
@@ -36,6 +36,7 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
+    "@blocks/kit": "^0.0.28",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
     "@mdx-js/mdx": "^1.6.1",
