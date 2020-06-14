@@ -55,7 +55,7 @@ module.exports = ({
         feeds: [
           {
             serialize: ({
-              query: { site, allArticle, allContentfulArticle },
+              query: { site, allArticle, allContentfulPost },
             }) => {
               if (local && !contentful) {
                 return allArticle.edges
@@ -73,7 +73,7 @@ module.exports = ({
                     };
                   });
               } else if (!local && contentful) {
-                return allContentfulArticle.edges
+                return allContentfulPost.edges
                   .filter((edge) => !edge.node.secret)
                   .map((edge) => {
                     return {
@@ -94,7 +94,7 @@ module.exports = ({
               } else {
                 const allArticlesData = {
                   ...allArticle,
-                  ...allContentfulArticle,
+                  ...allContentfulPost,
                 };
                 return allArticlesData.edges
                   .filter((edge) => !edge.node.secret)
@@ -133,7 +133,7 @@ module.exports = ({
                 : !local && contentful
                 ? `
               {
-                allContentfulArticle(sort: {order: DESC, fields: date}) {
+                allContentfulPost(sort: {order: DESC, fields: date}) {
                   edges {
                     node {
                       excerpt
@@ -169,7 +169,7 @@ module.exports = ({
                     }
                   }
                 }
-                allContentfulArticle(sort: {order: DESC, fields: date}) {
+                allContentfulPost(sort: {order: DESC, fields: date}) {
                   edges {
                     node {
                       excerpt

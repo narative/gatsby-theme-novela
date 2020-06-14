@@ -57,8 +57,7 @@
           "type": "Boolean",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -96,17 +95,14 @@
           "type": "Array",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false,
           "items": {
             "type": "Link",
             "validations": [
               {
-                "linkContentType": [
-                  "author"
-                ]
+                "linkContentType": ["author"]
               }
             ],
             "linkType": "Entry"
@@ -118,8 +114,7 @@
           "type": "Date",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -131,9 +126,7 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": [
-                "image"
-              ]
+              "linkMimetypeGroup": ["image"]
             }
           ],
           "disabled": false,
@@ -164,8 +157,7 @@
           "type": "Text",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         }
@@ -228,8 +220,7 @@
           "type": "Symbol",
           "localized": false,
           "required": true,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -253,8 +244,7 @@
           "type": "Symbol",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -266,9 +256,7 @@
           "required": true,
           "validations": [
             {
-              "linkMimetypeGroup": [
-                "image"
-              ]
+              "linkMimetypeGroup": ["image"]
             }
           ],
           "disabled": false,
@@ -281,8 +269,7 @@
           "type": "Boolean",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false
         },
@@ -292,8 +279,7 @@
           "type": "Array",
           "localized": false,
           "required": false,
-          "validations": [
-          ],
+          "validations": [],
           "disabled": false,
           "omitted": false,
           "items": {
@@ -482,8 +468,8 @@
   ],
   "locales": [
     {
-      "name": "English (United States)",
-      "code": "en-US",
+      "name": "Korean (Korea)",
+      "code": "ko-KR",
       "fallbackCode": null,
       "default": true,
       "contentManagementApi": true,
