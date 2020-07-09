@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import Icons from '@icons';
+import Icons from '@nicons';
 import mediaqueries from '@styles/media';
 
 interface SocialLinksProps {

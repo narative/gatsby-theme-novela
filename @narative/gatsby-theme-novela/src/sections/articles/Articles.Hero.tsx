@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import Section from '@components/Section';
 import Bio from '@components/Bio';
-import Icons from '@icons';
+import Icons from '@nicons';
 import mediaqueries from '@styles/media';
 import { IAuthor } from '@types';
 
