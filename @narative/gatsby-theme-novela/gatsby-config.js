@@ -257,5 +257,8 @@ module.exports = ({
         displayName: process.env.NODE_ENV === `development`,
       },
     },
+    {
+      resolve:  `gatsby-plugin-social9-comment`,
+    },
   ],
 });
