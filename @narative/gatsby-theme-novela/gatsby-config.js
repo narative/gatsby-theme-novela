@@ -259,6 +259,9 @@ module.exports = ({
     },
     {
       resolve:  `gatsby-plugin-social9-comment`,
+	  options: {
+        enable: true,
+      },
     },
   ],
 });
