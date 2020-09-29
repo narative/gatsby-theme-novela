@@ -1,6 +1,9 @@
 # Ignore everything:
 /*
 
+# Ignore js files:
+*.js
+
 # Except these root files:
 !CONTRIBUTING.md
 !LICENSE

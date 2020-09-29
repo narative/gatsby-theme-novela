@@ -3,11 +3,11 @@ require("dotenv").config();
 const siteMetadata = {
   title: `Novela by Narative`,
   name: `Narative`,
-  siteUrl: `https://novela.narative.co`,
+  siteUrl: `https://beenthinking.dev`,
   description: `This is my description that will be used in the meta tags and important for search results`,
   hero: {
-    heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
-    maxWidth: 652,
+    heading: `An exploration of the human mind and experiences`,
+    maxWidth: 950,
   },
   social: [
     {
@@ -59,11 +59,11 @@ const plugins = [
       contentAuthors: "content/authors",
       rootPath: "/",
       basePath: "/",
-      authorsPage: true,
+      authorsPage: false,
       mailchimp: true,
       sources: {
         local: true,
-        contentful: false,
+        // contentful: false,
       },
     },
   },
