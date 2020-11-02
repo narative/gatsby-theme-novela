@@ -78,7 +78,7 @@ const h4 = styled.h4`
 `;
 
 const h5 = styled.h5`
-  word-break: keep-all;  
+  word-break: keep-all;
   font-size: 18px;
   line-height: 1.45;
   ${commonStyles};

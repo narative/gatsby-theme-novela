@@ -130,7 +130,7 @@ const ArticleBody = styled.article`
   ${mediaqueries.desktop`
     padding-left: 53px;
   `}
-  
+
   ${mediaqueries.tablet`
     padding: 70px 0 80px;
   `}
