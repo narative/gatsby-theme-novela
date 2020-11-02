@@ -1,1 +1,1 @@
-export { default } from '@components/Section/Section'
+export { default } from '@components/Section/Section';
