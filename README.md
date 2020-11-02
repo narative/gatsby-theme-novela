@@ -250,6 +250,7 @@ module.exports = {
         url: `https://github.com/narative`,
       },
     ],
+    language: `en`,
   },
   plugins: ['@narative/gatsby-theme-novela'],
 };
@@ -444,8 +445,8 @@ import React from 'react';
  * Paste in your SVG logo and return it from this component.
  * Make sure you have a height set for your logo.
  * It is recommended to keep the height within 25-35px.
- * Logo comes with a property value called `fill`. `fill` is useful 
- * when you want to change your logo depending on the theme you are on. 
+ * Logo comes with a property value called `fill`. `fill` is useful
+ * when you want to change your logo depending on the theme you are on.
  */
 export default function Logo({ fill }) {
   return (
@@ -623,6 +624,7 @@ excerpt: This is a love story about Narative and Gatsby
 | hero.heading  | required |   String   |                                                                  Used in the Hero                                                                   |
 | hero.maxWidth | optional |   number   |                                                          Used in the Hero. Defaults to 652                                                          |
 | social        | required |   Array    | [View supported icon/name combinations](https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/SocialLinks/SocialLinks.tsx#L15). `url` is required and the icon is chosen based on the url. If you also provide `name`, then the icon will be the same as the name you provided as long as the name equals one of the supported icons (See example bellow). Used in site footer and meta tags |
+| language      | required |   String   |                                                          Used for the <html lang=`xx`></html>                                                       |
 
 [View Site Metadata example](https://github.com/narative/gatsby-theme-novela-example/blob/master/gatsby-config.js)
 
@@ -665,6 +667,10 @@ module.exports = {
         url: `https://bit.ly/1x0885j`,
       },
     ],
+
+    // language
+    // A required key and will be set <html lang="en">
+    language: `en`,
   },
 };
 ```
