@@ -49,6 +49,7 @@ const siteMetadata = {
       url: `mailto:`,
     },
   ],
+  language: `en`,
 };
 
 const plugins = [

@@ -44,6 +44,7 @@ const seoQuery = graphql`
       edges {
         node {
           siteMetadata {
+            language
             description
             social {
               url
@@ -392,7 +393,7 @@ const SEO: React.FC<HelmetProps> = ({
   return (
     <Helmet
       title={title || site.title}
-      htmlAttributes={{ lang: 'en' }}
+      htmlAttributes={{ lang: site.language }}
       script={themeUIDarkModeWorkaroundScript}
       meta={metaTags}
     >
