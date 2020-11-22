@@ -36,6 +36,7 @@ interface HelmetProps {
   timeToRead?: string;
   title: string;
   isSecret: false;
+  tags?: [string];
 }
 
 const seoQuery = graphql`
@@ -91,6 +92,7 @@ const SEO: React.FC<HelmetProps> = ({
   timeToRead,
   title,
   isSecret,
+  tags,
 }) => {
   const results = useStaticQuery(seoQuery);
   const site = results.allSite.edges[0].node.siteMetadata;
@@ -387,6 +389,10 @@ const SEO: React.FC<HelmetProps> = ({
 
   if (isSecret) {
     metaTags.push({ name: 'robots', content: 'noindex' });
+  }
+
+  if (tags) {
+    metaTags.push({ name: 'keywords', content: tags.join(',') });
   }
 
   return (

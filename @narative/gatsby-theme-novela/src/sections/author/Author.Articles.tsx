@@ -1,19 +1,20 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react';
+import styled from '@emotion/styled';
 
-import mediaqueries from "@styles/media";
-import { IArticle } from "@types";
+import mediaqueries from '@styles/media';
+import { IArticle } from '@types';
 
-import ArticlesList from "../articles/Articles.List";
+import ArticlesList from '../articles/Articles.List';
 
 interface AuthorArticlesProps {
   articles: IArticle[];
+  tags?: string[];
 }
 
-const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles }) => {
+const AuthorArticles: React.FC<AuthorArticlesProps> = ({ articles, tags }) => {
   return (
     <AuthorArticlesContainer>
-      <ArticlesList articles={articles} alwaysShowAllDetails />
+      <ArticlesList articles={articles} tags={tags} alwaysShowAllDetails />
     </AuthorArticlesContainer>
   );
 };

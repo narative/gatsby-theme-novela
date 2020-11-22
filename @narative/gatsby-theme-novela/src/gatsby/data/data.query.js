@@ -25,6 +25,7 @@ module.exports.local = {
           secret
           title
           author
+          tags
           date(formatString: "MMMM Do, YYYY")
           dateForSEO: date
           timeToRead
@@ -105,6 +106,7 @@ module.exports.contentful = {
               timeToRead
             }
           }
+          tags
           excerpt
           title
           slug
