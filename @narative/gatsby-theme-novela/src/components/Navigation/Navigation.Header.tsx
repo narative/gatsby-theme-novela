@@ -14,6 +14,8 @@ import {
   getBreakpointFromTheme,
 } from "@utils";
 
+import { useFlexSearch } from 'react-use-flexsearch';
+
 const siteQuery = graphql`
   {
     sitePlugin(name: { eq: "@narative/gatsby-theme-novela" }) {
@@ -22,8 +24,37 @@ const siteQuery = graphql`
         basePath
       }
     }
+    localSearchPages {
+        index
+        store
+    }
   }
 `;
+
+const SearchToggle: React.FC<{ queryData }> = (props) => {
+  const [search, setSearch] = useState("");
+
+  // Set Index and Score for FlexSearch
+  const index = props.queryData.index
+  const store = props.queryData.store
+
+  let results = useFlexSearch(search, index, store)
+  console.log(results)
+
+  function handleSearchChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearch(event.currentTarget.value);
+  }
+
+  return (
+    <Input
+      placeholder="Search ..."
+      name="search"
+      type="text"
+      value={search}
+      onChange={handleSearchChange}
+    />
+  );
+};
 
 const DarkModeToggle: React.FC<{}> = () => {
   const [colorMode, setColorMode] = useColorMode();
@@ -84,7 +115,7 @@ const SharePageButton: React.FC<{}> = () => {
 const NavigationHeader: React.FC<{}> = () => {
   const [showBackArrow, setShowBackArrow] = useState<boolean>(false);
   const [previousPath, setPreviousPath] = useState<string>("/");
-  const { sitePlugin } = useStaticQuery(siteQuery);
+  const { sitePlugin, localSearchPages } = useStaticQuery(siteQuery);
 
   const [colorMode] = useColorMode();
   const fill = colorMode === "dark" ? "#fff" : "#000";
@@ -134,11 +165,12 @@ const NavigationHeader: React.FC<{}> = () => {
               <Icons.Ex fill={fill} />
             </button>
           ) : (
-            <>
-              <SharePageButton />
-              <DarkModeToggle />
-            </>
-          )}
+              <>
+                <SharePageButton />
+                <DarkModeToggle />
+                <SearchToggle queryData={localSearchPages} />
+              </>
+            )}
         </NavControls>
       </NavContainer>
     </Section>
@@ -180,7 +212,7 @@ const NavContainer = styled.div`
   }
 `;
 
-const LogoLink = styled(Link)<{ back: string }>`
+const LogoLink = styled(Link) <{ back: string }>`
   position: relative;
   display: flex;
   align-items: center;
@@ -361,4 +393,35 @@ const Hidden = styled.span`
   height: 0px;
   visibility: hidden;
   overflow: hidden;
+`;
+
+const Input = styled.input<{}>`
+  margin-left: 30px;
+  position: relative;
+  background: ${p => p.theme.colors.inputBackground};
+  border-radius: 35px;
+  border: none;
+  padding: 13px 21px 13px 35px;
+  width: 471px;
+  color: ${p => p.theme.colors.primary};
+
+  ::placeholder {
+    color: ${p => p.theme.colors.track};
+    opacity: 1;
+  }
+
+  :-ms-input-placeholder {
+    color: ${p => p.theme.colors.track};
+  }
+
+  ::-ms-input-placeholder {
+    color: ${p => p.theme.colors.track};
+  }
+
+  ${mediaqueries.tablet`
+    width: calc(100% - 36px);
+    margin: 0 18px;
+    padding: 14px 14px 14px 30px;
+    margin-bottom: 30px;
+  `}
 `;
