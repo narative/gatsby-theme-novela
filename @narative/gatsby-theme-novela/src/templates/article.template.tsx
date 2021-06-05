@@ -14,6 +14,7 @@ import { debounce } from "@utils";
 
 import ArticleAside from "../sections/article/Article.Aside";
 import ArticleHero from "../sections/article/Article.Hero";
+import ArticleComment from "../sections/article/Article.Comment";
 import ArticleControls from "../sections/article/Article.Controls";
 import ArticlesNext from "../sections/article/Article.Next";
 import ArticleSEO from "../sections/article/Article.SEO";
@@ -104,6 +105,7 @@ const Article: Template = ({ pageContext, location }) => {
           <FooterSpacer />
         </NextArticle>
       )}
+      <ArticleComment />
     </Layout>
   );
 };
