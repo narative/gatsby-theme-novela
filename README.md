@@ -153,9 +153,10 @@ The recommended project structure for your content and site looks like this:
   novela-site
     ├── content
     │ ├── authors
-    │ │   ├── avatars
-    │ │   │    └── avatar.jpg
-    │ │   └── authors.yml
+    │ │   └── authors 
+    │ │       ├── avatars
+    │ │       │    └── avatar.jpg
+    │ │       └── authorname.yml
     │ └── posts
     │     └── 2020-01-01-my-first-novela-post
     │         ├── images
@@ -185,37 +186,38 @@ Once you've setup `@narative/gatsby-theme-novela` plugin in `gatsby-config.js` y
 
 ### Step 4: Adding an Author
 
-In [step 2](#step-2-folder-structure) we created the folder structure of our project. We can now add an Author by populating `/content/authors/authors.yml`:
+In [step 2](#step-2-folder-structure) we created the folder structure of our project. We can now add an Author by populating `/content/authors/authors`:
 
 ```
   novela-site
   └── content
     └── authors
-        ├── avatars
-        │    └── brotzky-avatar.jpg
-        └── authors.yml
+        └── authors 
+            ├── avatars
+            │   └── brotzky-avatar.jpg
+            └── david-brotzky.yml
 ```
 
-In `authors.yml` add an Author. There **must** be at least one `featured` Author.
+In `/content/authors/` add an Author by creating a `authorname.yml` file. There **must** be at least one `featured` Author.
 
-`/content/authors/authors.yml`:
+`/content/authors/authors/david-brotzky.yml`:
 
 ```yml
-- name: Dennis Brotzky
-  bio: |
-    Written by Dennis Brotzky who lives and works in Vancouver building useful things.
-    You should follow him on Twitter.
-  avatar: ./avatars/brotzky-avatar.jpg
-  featured: true
-  social:
-    - url: https://unsplash.com
-    - url: https://stackoverflow.com
-    - url: https://github.com
+name: Dennis Brotzky
+bio: |
+  Written by Dennis Brotzky who lives and works in Vancouver building useful things.
+  You should follow him on Twitter.
+avatar: ./avatars/brotzky-avatar.jpg
+featured: true
+social:
+  - url: https://unsplash.com
+  - url: https://stackoverflow.com
+  - url: https://github.com
 ```
 
 ### Step 5: Adding a Post
 
-Once you have at least one Author defined in `authors.yml` you can add your first Post.
+Once you have at least one Author created, you can add your first Post.
 
 Start by creating a new folder in `content/posts`. You can name it anything you like but we recommend including the date at the front to organize your posts. Once you've created your folder you can add an `index.mdx` file and an `images` folder.
 
@@ -240,6 +242,8 @@ excerpt: This is a love story about Narative and Gatsby
 In order to configure the theme to properly generate the pages and meta tags you must add specific data to `siteMetadata`.
 
 The fields that are unique to Novela are `hero.heading`, `hero.maxWidth`, and `social`.
+
+The complete list of supported names and icons for the `social` field can be found [here](https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/components/SocialLinks/SocialLinks.tsx#L15).
 
 Add your Site Metadata to the `gatsby-config.js` file.
 
