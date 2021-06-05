@@ -121,7 +121,7 @@ module.exports = ({
               }
               `
                 : !local && contentful
-                ? `
+                  ? `
               {
                 allContentfulArticle(sort: {order: DESC, fields: date}) {
                   edges {
@@ -144,7 +144,7 @@ module.exports = ({
                 }
               }
               `
-                : `
+                  : `
               {
                 allArticle(sort: {order: DESC, fields: date}) {
                   edges {
@@ -256,6 +256,35 @@ module.exports = ({
       options: {
         autoLabel: process.env.NODE_ENV === `development`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {
+        name: 'pages',
+        engine: 'flexsearch',
+        query: `{
+                  allArticle {
+                    nodes {
+                      id
+                      title
+                      excerpt
+                      date
+                      author
+                    }
+                  }
+                }`,
+        ref: 'id',
+        index: ['title', 'excerpt'],
+        store: ['id', 'title', 'excerpt', 'date', 'author'],
+        normalizer: ({ data }) =>
+          data.allArticle.nodes.map(node => ({
+            id: node.id,
+            title: node.title,
+            excerpt: node.excerpt,
+            date: node.date,
+            author: node.author,
+          })),
+      }
     },
   ],
 });
