@@ -15,12 +15,14 @@ const ArticlesPage: Template = ({ location, pageContext }) => {
   const articles = pageContext.group;
   const authors = pageContext.additionalContext.authors;
 
+  const { tags } = pageContext;
+
   return (
     <Layout>
       <SEO pathname={location.pathname} />
       <ArticlesHero authors={authors} />
       <Section narrow>
-        <ArticlesList articles={articles} />
+        <ArticlesList articles={articles} tags={tags} />
         <ArticlesPaginator show={pageContext.pageCount > 1}>
           <Paginator {...pageContext} />
         </ArticlesPaginator>

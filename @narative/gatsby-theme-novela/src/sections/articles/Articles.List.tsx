@@ -11,6 +11,8 @@ import { IArticle } from '@types';
 
 import { GridLayoutContext } from './Articles.List.Context';
 
+import TagsList from '../tags/Tags.List';
+
 /**
  * Tiles
  * [LONG], [SHORT]
@@ -28,16 +30,19 @@ import { GridLayoutContext } from './Articles.List.Context';
 interface ArticlesListProps {
   articles: IArticle[];
   alwaysShowAllDetails?: boolean;
+  tags?: boolean;
 }
 
 interface ArticlesListItemProps {
   article: IArticle;
   narrow?: boolean;
+  tags?: boolean;
 }
 
 const ArticlesList: React.FC<ArticlesListProps> = ({
   articles,
   alwaysShowAllDetails,
+  tags,
 }) => {
   if (!articles) return null;
 
@@ -76,8 +81,8 @@ const ArticlesList: React.FC<ArticlesListProps> = ({
             hasOnlyOneArticle={hasOnlyOneArticle}
             reverse={isEven}
           >
-            <ListItem article={ap[0]} narrow={isEven} />
-            <ListItem article={ap[1]} narrow={isOdd} />
+            <ListItem article={ap[0]} narrow={isEven} tags={tags} />
+            <ListItem article={ap[1]} narrow={isOdd} tags={tags} />
           </List>
         );
       })}
@@ -87,7 +92,11 @@ const ArticlesList: React.FC<ArticlesListProps> = ({
 
 export default ArticlesList;
 
-const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
+const ListItem: React.FC<ArticlesListItemProps> = ({
+  article,
+  narrow,
+  tags,
+}) => {
   if (!article) return null;
 
   const { gridLayout } = useContext(GridLayoutContext);
@@ -99,12 +108,14 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
     imageSource.constructor === Object;
 
   return (
-    <ArticleLink to={article.slug} data-a11y="false">
-      <Item gridLayout={gridLayout}>
+    <Item gridLayout={gridLayout}>
+      <ArticleLink to={article.slug} data-a11y="false">
         <ImageContainer narrow={narrow} gridLayout={gridLayout}>
           {hasHeroImage ? <Image src={imageSource} /> : <ImagePlaceholder />}
         </ImageContainer>
-        <div>
+      </ArticleLink>
+      <div>
+        <ArticleLink to={article.slug} data-a11y="false">
           <Title dark hasOverflow={hasOverflow} gridLayout={gridLayout}>
             {article.title}
           </Title>
@@ -115,12 +126,17 @@ const ListItem: React.FC<ArticlesListItemProps> = ({ article, narrow }) => {
           >
             {article.excerpt}
           </Excerpt>
-          <MetaData>
+          <MetaData tags={tags && article.tags.length > 0}>
             {article.date} · {article.timeToRead} min read
           </MetaData>
-        </div>
-      </Item>
-    </ArticleLink>
+        </ArticleLink>
+        {tags && (
+          <Tags narrow={narrow}>
+            <TagsList tags={article.tags} />
+          </Tags>
+        )}
+      </div>
+    </Item>
   );
 };
 
@@ -175,7 +191,7 @@ const listTile = p => css`
 
   ${mediaqueries.tablet`
     grid-template-columns: 1fr;
-    
+
     &:not(:last-child) {
       margin-bottom: 0;
     }
@@ -247,6 +263,17 @@ const List = styled.div<{
 
 const Item = styled.div<{ gridLayout: string }>`
   ${p => (p.gridLayout === 'rows' ? listItemRow : listItemTile)}
+
+  position: relative;
+  display: grid;
+  max-width: 100%;
+  max-height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  z-index: 1;
+  transition: transform 0.33s var(--ease-out-quart);
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 `;
 
 const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
@@ -289,11 +316,11 @@ const Title = styled(Headings.h2)`
   `}
 
   ${mediaqueries.tablet`
-    font-size: 24px;  
+    font-size: 24px;
   `}
 
   ${mediaqueries.phablet`
-    font-size: 22px;  
+    font-size: 22px;
     padding: 30px 20px 0;
     margin-bottom: 10px;
     -webkit-line-clamp: 3;
@@ -316,7 +343,7 @@ const Excerpt = styled.p<{
     display: -webkit-box;
   `}
 
-  ${mediaqueries.phablet`
+  ${mediaqueries.tablet`
     margin-bottom: 15px;
   `}
 
@@ -328,30 +355,46 @@ const Excerpt = styled.p<{
   `}
 `;
 
-const MetaData = styled.div`
-  font-weight: 600;
-  font-size: 16px;
-  color: ${p => p.theme.colors.grey};
-  opacity: 0.33;
-
-  ${mediaqueries.phablet`
-    max-width: 100%;
-    padding:  0 20px 30px;
-  `}
-`;
-
-const ArticleLink = styled(Link)`
+const Tags = styled.div<{
+  narrow: boolean;
+}>`
   position: relative;
   display: block;
   width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   border-radius: 5px;
   z-index: 1;
   transition: transform 0.33s var(--ease-out-quart);
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  margin: 10px 0;
 
+  ${mediaqueries.phablet`
+    max-width: 100%;
+    padding: 10px 15px 10px;
+  `}
+`;
+
+const MetaData = styled.div<{
+  tags: boolean;
+}>`
+  font-weight: 600;
+  font-size: 16px;
+  color: ${p => p.theme.colors.grey};
+  opacity: 0.33;
+  ${p =>
+    p.tags
+      ? mediaqueries.phablet`
+          max-width: 100%;
+          padding: 0 20px;
+        `
+      : mediaqueries.phablet`
+          max-width: 100%;
+          padding: 0 20px 30px;
+        `}
+`;
+
+const ArticleLink = styled(Link)`
   &:hover ${ImageContainer}, &:focus ${ImageContainer} {
     transform: translateY(-1px);
     box-shadow: 0 50px 80px -20px rgba(0, 0, 0, 0.27),

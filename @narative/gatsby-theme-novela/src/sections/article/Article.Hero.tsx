@@ -8,13 +8,19 @@ import mediaqueries from '@styles/media';
 import { IArticle, IAuthor } from '@types';
 
 import ArticleAuthors from './Article.Authors';
+import TagsList from '../tags/Tags.List';
 
 interface ArticleHeroProps {
   article: IArticle;
   authors: IAuthor[];
+  tags?: boolean;
 }
 
-const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
+const ArticleHero: React.FC<ArticleHeroProps> = ({
+  article,
+  authors,
+  tags,
+}) => {
   const hasCoAUthors = authors.length > 1;
   const hasHeroImage =
     article.hero &&
@@ -31,6 +37,11 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, authors }) => {
             {article.date} · {article.timeToRead} min read
           </ArticleMeta>
         </HeroSubtitle>
+        {tags && (
+          <HeroTags>
+            <TagsList tags={article.tags} />
+          </HeroTags>
+        )}
       </Header>
       <HeroImage id="ArticleImage__Hero">
         {hasHeroImage ? (
@@ -124,6 +135,20 @@ const HeroHeading = styled(Headings.h1)`
 
   ${mediaqueries.phablet`
     font-size: 32px;
+  `}
+`;
+
+const HeroTags = styled.div`
+  position: relative;
+  display: flex;
+  font-size: 18px;
+  color: ${p => p.theme.colors.grey};
+  margin: 15px 0;
+
+  ${p => mediaqueries.phablet`
+    font-size: 14px;
+    flex-direction: column;
+    margin: 10px 0;
   `}
 `;
 
