@@ -69,7 +69,7 @@ export default MDX;
 const IMAGE_WIDTHS = {
   regular: '680px',
   large: '1004px',
-  full: '100vw',
+  full: '100%',
 };
 
 const ARTICLE_WIDTH = css`
@@ -295,7 +295,7 @@ const ImageCSS = css`
   div.Image__Large {
     position: relative;
     left: -68px;
-    width: ${IMAGE_WIDTHS.full};
+    width: calc(${IMAGE_WIDTHS.full} + 68px);
     margin: 25px auto 60px;
     pointer-events: none;
 
@@ -310,11 +310,13 @@ const ImageCSS = css`
 
     ${mediaqueries.desktop`
       left: -53px;
+      width: calc(${IMAGE_WIDTHS.full} + 53px);
     `};
 
     ${mediaqueries.tablet`
       left: 0;
       margin: 0 auto 25px;
+      width: ${IMAGE_WIDTHS.full};
     `};
   }
 `;
